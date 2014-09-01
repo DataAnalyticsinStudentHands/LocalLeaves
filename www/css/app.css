@@ -6,12 +6,20 @@ body {
     set some of this in config.xml?
     */
 }
-
-#main-wrapper{
-	width: 100%;
-	padding-bottom: 25%;
+#categSearch{
+    position:absolute;
 }
-
+#main-wrapper{
+    position:fixed;
+	width: 700px;
+    height: 100%;
+	padding-bottom: 25%;
+    overflow:hidden;
+}
+#fanWindow{
+    position:absolute;
+    width:500px;
+}
 /*HEADROOM*/
 .headroom {
     position: fixed;

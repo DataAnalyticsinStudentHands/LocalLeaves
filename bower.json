@@ -7,7 +7,6 @@
     "angular-gestures": "latest",
     "angular-ui-router": "latest",
     "restangular": "latest",
-    "lodash": "latest",
-    "headroom": "latest"
+    "lodash": "latest"
   }
 }

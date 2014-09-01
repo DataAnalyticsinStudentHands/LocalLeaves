@@ -2,7 +2,7 @@
     {
         "Native":{
             "pretty_title":"Native",
-            "details":"In Texas or not",
+            "details":"Region in which this plant is native",
             "search_use":["search", "user"],
             "selectDeg":36,
             "icons":[

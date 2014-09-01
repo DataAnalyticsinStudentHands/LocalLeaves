@@ -1,10 +1,11 @@
 /* Controllers */
     var localLeavesControllerModule = angular.module('localLeavesControllerModule', ['angular-gestures']);
 
-    localLeavesControllerModule.controller('mainCtrl', ['$scope', '$state', 'plantObjectModel',
-        function ($scope, $state, plantObjectModel) {
+    localLeavesControllerModule.controller('mainCtrl', ['$scope', '$state', '$window', 'plantObjectModel',
+        function ($scope, $state, $window, plantObjectModel) {
             
             $scope.plantObjectModel = plantObjectModel;
+            var windowHt = $scope.windowHt = $window.outerHeight;
 //            function touchHandlerDummy($event){  //seems to kill other stuff on page
 ////                        $event.preventDefault();
 ////                        return false;
@@ -17,11 +18,18 @@
                 alert(text);
             };
             $scope.Sci = false;
-            $scope.traditionalInputs = false;
-            $scope.iconTransform = function(categType,icon){
+            //pseudo-code:
+            //numRows is determined from availHeight then assigned as an even number height and set at 100%;
+            var numRows = $scope.numRows = 3;
+            $scope.iconTransform = function(categType,icon,selectDeg){
+                if (selectDeg=='new'){
+                    selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
+                }else{
+                    plantObjectModel.dataIcons[categType].selectDeg = selectDeg;
+                };
                 var categNum = $scope.categPosition(categType);
                 var icons = plantObjectModel.dataIcons[categType].icons;
-                var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
+                
                 var select = selectDeg/12; 
                 var centerLngth = Math.floor(icons.length/2); 
                 if (select>icons.length-1){
@@ -52,7 +60,21 @@
                 var categs = plantObjectModel.dataIcons;
                 return categs.indexOf(categType);
             };
-            $scope.moveRow = function(categType,direction){
+            
+            $scope.moveRow = function(categType,$event){
+                var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
+                var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
+                var tempDeg = 0.1;
+                var icons = plantObjectModel.dataIcons[categType].icons;
+                if (tempDeg < maxDegrees){
+                    tempDeg -= $event.gesture.deltaX/36;
+                    console.log(tempDeg)
+                    plantObjectModel.dataIcons[categType].selectDeg = tempDeg;
+                    console.log(plantObjectModel.dataIcons[categType].selectDeg)
+                    for (var i = 0;i<icons.length;i++){
+                        $scope.iconTransform(categType,icons[i],'new');
+                    }
+                }
                 //this would be for moving part of a degree - 12 is a full snap to position
 //                var dir = -4;
 //                if ( direction == 'left' ){
@@ -80,9 +102,9 @@
                 }
                 
                 plantObjectModel.dataIcons[categType].selectDeg = selectionDeg;
-                icons = plantObjectModel.dataIcons[categType].icons;
+                var icons = plantObjectModel.dataIcons[categType].icons;
                 for (var i = 0;i<icons.length;i++){
-                    $scope.iconTransform(categType,icons[i]);
+                    $scope.iconTransform(categType,icons[i],'new');
                 }
             }
             
