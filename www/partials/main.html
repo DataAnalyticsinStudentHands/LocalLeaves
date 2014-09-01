@@ -1,0 +1,90 @@
+<div id="main-wrapper">
+    <input id="categSearch" type="search" size="18" ng-model="q" placeholder="filter searches..." />
+    <svg id="fanWindow" width="720" height="2280"  viewBox="0 0 720 2280" xmlns="http://www.w3.org/2000/svg">
+<!--        <span ng-include="'img/feb.svg'"></span>-->
+        <g ng-repeat="categType in plantObjectModel.dataIcons | filter:q | limitTo:11">
+            <path fill="none" stroke="#BD9E73" 
+                  stroke-width="16" stroke-miterlimit="10"
+                  d="M140,25 s100,-15 220,0" />
+            <path fill="none" stroke="#BD9E73" 
+                  stroke-width="36" stroke-miterlimit="10" 
+                  d="M{{150+($index*4)}},{{(190*$index)+175}} 
+                     s{{100-($index*4)}},-15 {{200-($index*8)}},0" />
+            <path fill="none" stroke="#BD9E73" stroke-width="6" 
+                  stroke-miterlimit="10" 
+                  d="M{{25+($index*6)}},{{(190*$index)+225}} 
+                     s{{200-($index*6)}},-90 {{475-($index*12)}},0" />
+            <path id="{{categType+'txtPth'}}" 
+                  fill="none" stroke="none"
+                  d="M{{150+($index*4)}},{{(190*$index)+185}} 
+                     s{{100-($index*4)}},-25 {{200-($index*8)}},0">
+            </path>
+            <path ng-repeat-end 
+                  fill="none" stroke="#BD9E73" 
+                  stroke-width="16"
+                  d="M150,25 L{{155+($index*4)}},{{(190*$index)+190}}">
+            </path>
+            <path ng-repeat-end 
+                  fill="none" stroke="#BD9E73" 
+                  stroke-width="16"
+                  d="M350,25 L{{350-($index*4)}},{{(190*$index)+190}}">
+            </path>
+                  
+            <text class="prettyTitle" font-family="Verdana" 
+                  font-size="15" fill="blue" 
+                  text-anchor="middle" 
+                >
+                <textPath xlink:href="{{'#'+categType+'txtPth'}}"
+                          startOffset="50%" 
+                          >
+                    {{plantObjectModel.dataIcons[categType].pretty_title}}
+                </textPath>
+            </text>
+<!--
+            <g ng-repeat="icon in plantObjectModel.dataIcons[categType].icons"
+                class="{{'img/'+icon+'.svg'}}"
+                ng-include="'{{img/dec.svg}}'"
+                ng-click="alert('should explain category')"
+                ng-swipe-left="swipeRow(categType,'left')"
+                ng-swipe-right="swipeRow(categType,'right')"
+                ng-attr-x="{{200}}" 
+                ng-attr-y="{{180+(categPosition(categType)*190)}}" 
+                height="120" width="120"  
+                ng-attr-transform="{{iconTransform(categType,icon)}}"
+            ></g>
+
+ADD: Total heigth and width, and set height and width of svg viewPort accordingly? then make it 100% on surrounding, and have width filled with other stuff?
+-->
+            <image ng-repeat="icon in plantObjectModel.dataIcons[categType].icons"
+                    class="rowImage {{$index}} {{iconTransform(categType,icon)}}"
+                    ng-click="alert('should explain category')"
+                    ng-swipe-left="swipeRow(categType,'left')"
+                    ng-swipe-right="swipeRow(categType,'right')"
+                    ng-attr-x="{{200}}" 
+                    ng-attr-y="{{40+(categPosition(categType)*190)}}" 
+                    height="100" width="100"  
+                    ng-attr-transform="{{iconTransform(categType,icon)}}"
+                    xlink:href="{{'img/'+icon+'.svg'}}"
+            />
+            <!--below is not on top of vertical bars??-->
+            <path class="fake-buttons"
+                  ng-click="swipeRow(categType,'left')"
+                  d="M100,{{(190*$index)+10}} L220,{{(190*$index)+10}} L220,{{(190*$index)+190}} L120,{{(190*$index)+190}} z"
+                  fill="white" opacity=".001"
+            />
+            <path class="fake-buttons"
+                  ng-click="swipeRow(categType,'right')"
+                  d="M300,{{(190*$index)+10}} L400,{{(190*$index)+10}} L380,{{(190*$index)+190}} L300,{{(190*$index)+190}} z"
+                  fill="white" opacity=".001"
+            />
+            
+        </g>
+    </svg>
+	
+<!--                ng-include="'{{'img/'+icon+'.svg'}}'"  
+        draw all the lines inside this??
+ng-attr-y="{{40+(categPosition(categType)*190)}}"
+ng-attr-x="{{260-(plantObjectModel.dataIcons[categType].pretty_title.length*4)}}" 
+                ng-attr-y="{{(190*$index)+175}}"
+-->
+</div>

@@ -1,0 +1,6 @@
+.tmp
+*.keystore
+*.sw*
+platforms/^.*
+node_modules
+www/bower_components

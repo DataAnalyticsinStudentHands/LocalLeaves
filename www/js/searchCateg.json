@@ -1,0 +1,403 @@
+[
+    {
+        "Native":{
+            "pretty_title":"Native",
+            "details":"In Texas or not",
+            "search_use":["search", "user"],
+            "selectDeg":36,
+            "icons":[
+                "native1",
+                "native2",
+                "native3",
+                "native4",
+                "nativenot"]
+        },
+        "Color_Timing":{
+            "pretty_title":"Bloom Season",
+            "details":"Season it blooms",
+            "search_use":["search"],
+            "selectDeg":24,
+            "icons":[
+                "seasonspring",
+                "seasonsummer",
+                "seasonfall",
+                "seasonwinter"]
+        },
+        "Soil_Conditions":{
+            "pretty_title":"Water",
+            "details":"Amount of water",
+            "search_use":["search", "user", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "waterdrop_empty",
+                "waterdrop_half",
+                "waterdrop_full"]
+        },
+        "Sun":{
+            "pretty_title":"Sunlight",
+            "details":"Amount of sunglight",
+            "search_use":["search", "user", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "sun_empty",
+                "sun_half",
+                "sun_full"]
+        },
+        "Growth_Size":{
+            "pretty_title":"Growth Size",
+            "details":"Speed of growth",
+            "search_use":["user", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "grow1",
+                "grow2",
+                "grow3"]
+        },
+        "Maintenance":{
+            "pretty_title":"Maintenance",
+            "details":"The maintenance",
+            "search_use":["search"],
+            "selectDeg":12,
+            "icons":[
+                "maint1",
+                "maint2",
+                "maint3"]
+        },
+        "Wildlife":{
+            "pretty_title":"Wild Life",
+            "details":"Animal dangers",
+            "search_use":["search"],
+            "selectDeg":24,
+            "icons":[
+                "wildbee",
+                "wildbird",
+                "wildbutterfly",
+                "wildlife"]
+        },
+        "Class":{
+            "pretty_title":"Category",
+            "details":"Type of plant",
+            "search_use":["search"],
+            "selectDeg":24,
+            "icons":[
+                "class1",
+                "class2",
+                "class3",
+                "class4"]
+        },
+        "Map":{
+            "pretty_title":"Location",
+            "details":"Where the plant is found",
+            "search_use":["search", "rating"],
+            "selectDeg":24,
+            "icons":[
+                "map1",
+                "map2",
+                "map3",
+                "map4"]
+        },
+        "Height_ft":{
+            "pretty_title":"Height",
+            "details":"Height (ft)",
+            "search_use":["rating"],
+            "selectDeg":24,
+            "icons":[
+                "small",
+                "med",
+                "large",
+                "x-large"]
+        },
+        "Width_ft":{
+            "pretty_title":"Width",
+            "details":"Width (ft)",
+            "search_use":["rating"],
+            "selectDeg":24,
+            "icons":[
+                "small",
+                "med",
+                "large",
+                "x-large"]
+        },
+        "pH":{
+            "pretty_title":"pH",
+            "details":"pH the plant prefers",
+            "search_use":["search","rating"],
+            "selectDeg":12,
+            "icons":[
+                "0",
+                "6",
+                "16"]
+        },
+        "Irrigated":{
+            "pretty_title":"Irrigation",
+            "details":"Plant needs a constant supply of water ",
+            "search_use":["rating"],
+            "selectDeg":12,
+            "icons":[
+                "0",
+                "5",
+                "10"]
+        },
+        "Distance_between_Plants":{
+            "pretty_title":"Distance",
+            "details":"Space to plant between other plants",
+            "search_use":["rating"],
+            "selectDeg":12,
+            "icons":[
+                "0",
+                "5",
+                "10"]
+        },
+        "Root_Depth":{
+            "pretty_title":"Root depth",
+            "details":"Length underground that roots extend ",
+            "search_use":["search", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "0",
+                "5",
+                "10"]
+        },
+        "Growth_Rate":{
+            "pretty_title":"Growth rate",
+            "details":"Speed of growth",
+            "search_use":["user", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "slow",
+                "normal",
+                "fast"]
+        },
+        "When_to_plant":{
+            "pretty_title":"When to plant",
+            "details":"Growth dependant planting time",
+            "search_use":["rating"],
+            "selectDeg":12,
+            "icons":[
+                "early",
+                "mid",
+                "end"]
+        },
+        "Ease_of_Planting":{
+            "pretty_title":"Planting difficulty",
+            "details":"Work needed to assist a plant grow",
+            "search_use":["search", "user", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "easy",
+                "mid",
+                "hard"]
+        },
+        "Purpose":{
+            "pretty_title":"Planting purpose",
+            "details":"Reason for planting",
+            "search_use":["search", "user"],
+            "selectDeg":12,
+            "icons":[
+                "fun",
+                "food",
+                "etc"]
+        },
+        "Companion_Plants":{
+            "pretty_title":"Companion Plants",
+            "details":"Plant that assists growth of another",
+            "search_use":["rating"],
+            "selectDeg":12,
+            "icons":[
+                "early",
+                "mid",
+                "end"]
+        },
+        "Endorsed_By":{
+            "pretty_title":"Supported by",
+            "details":"Organizations that support certain plants",
+            "search_use":["search", "user"],
+            "selectDeg":12,
+            "icons":[
+                "A",
+                "B",
+                "C"]
+        },
+        "Cultivar":{
+            "pretty_title":"Cultivar",
+            "details":"Human propagated subspecies",
+            "search_use":["searcg", "user", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "early",
+                "mid",
+                "end"]
+        },
+        "Duration":{
+            "pretty_title":"Lifetime",
+            "details":"Life span",
+            "search_use":["search", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "early",
+                "mid",
+                "end"]
+        },
+        "Fruit_Timing":{
+            "pretty_title":"Season for Fruit",
+            "details":"Season fruit is produced",
+            "search_use":["search","rating"],
+            "selectDeg":12,
+            "icons":[
+                "spring",
+                "summer",
+                "fall",
+                "winter"]
+        },
+        "Seed_Type":{
+            "pretty_title":"Seed shape",
+            "details":"Shape and type of seed",
+            "search_use":["rating"],
+            "selectDeg":12,
+            "icons":[
+                "small",
+                "mid",
+                "weird"]
+        },
+        "Larval_Host ":{
+            "pretty_title":"Larval Host ",
+            "details":"Larvae that live and feed off of this plant",
+            "search_use":["search", "user", "rating"],
+            "selectDeg":12,
+            "icons":[
+                "bug",
+                "bug2",
+                "bug3"]
+        },
+        "Adult_Host":{
+            "pretty_title":"Adult Host ",
+            "details":"Animals that feed off of this plant",
+            "search_use":["serch", "user", "rating"],
+            "selectDeg":24,
+            "icons":[
+                "small",
+                "mid",
+                "weird"]
+        },
+        "Interesting_Facts":{
+            "pretty_title":"Facts",
+            "details":"Any additional information",
+            "search_use":["rating"],
+            "selectDeg":12,
+            "icons":[
+                "bad",
+                "okay",
+                "great"]
+        },
+        "Toxic_Part":{
+            "pretty_title":"Toxicity",
+            "details":"Toxic parts of the plant",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "root",
+                "stem",
+                "leaf"]
+        },
+        "Edible_Part":{
+            "pretty_title":"Toxicity",
+            "details":"Edible parts of the plant",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "root",
+                "stem",
+                "leaf"]
+        },
+        "Allergenicity":{
+            "pretty_title":"Causes Allergies",
+            "details":"Can cause allergies",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "small",
+                "mid",
+                "weird"]
+        },
+        "Air_Purifying":{
+            "pretty_title":"Air purifier",
+            "details":"Cleans the air",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "small",
+                "mid",
+                "weird"]
+        },
+        "Soil_Purifying":{
+            "pretty_title":"Soil Purifying",
+            "details":"Add more nutrients to soil",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "small",
+                "mid",
+                "weird"]
+        },
+        "Hardy_Scale":{
+            "pretty_title":"Hardyness",
+            "details":"Able to withstand weather extremes",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "small",
+                "mid",
+                "weird"]
+        },
+        "Pest_Tolerance":{
+            "pretty_title":"Pest tolerance",
+            "details":"Pest resistance",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "weak",
+                "mid",
+                "strong"]
+        },
+        "Disease_Tolerance":{
+            "pretty_title":"Disease tolerance",
+            "details":"Susceptibility to diseases",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "weak",
+                "mid",
+                "strong"]
+        },
+        "Cold_Tolerance":{
+            "pretty_title":"Cold tolerance",
+            "details":"Susceptibility to cold temperatures",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "weak",
+                "mid",
+                "strong"]
+        },
+        "Drought_Tolerance":{
+            "pretty_title":"Drought tolerance",
+            "details":"Susceptibility to min amounts of moisture",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "weak",
+                "mid",
+                "strong"]
+        },
+        "Moisture_Tolerance":{
+            "pretty_title":"Flood tolerance",
+            "details":"Susceptibility to max amounts of moisture",
+            "search_use":["search","user","rating"],
+            "selectDeg":12,
+            "icons":[
+                "weak",
+                "mid",
+                "weird"]
+        }
+    }
+]

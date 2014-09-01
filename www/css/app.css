@@ -1,0 +1,61 @@
+/* app css stylesheet */
+body {
+	padding: 0px;
+    background-color: #F5F0EA;
+/*	screenOrientation.autoRotate = 'Disabled';
+    set some of this in config.xml?
+    */
+}
+
+#main-wrapper{
+	width: 100%;
+	padding-bottom: 25%;
+}
+
+/*HEADROOM*/
+.headroom {
+    position: fixed;
+	background-color: #BD9E73; /*#68811e; (green)*/
+	/*background-image: url('../img/bg.png');   same as landing page*/
+	padding-bottom:50px;
+	top:0px;
+	left:0px;
+	width:100%;
+	height: 60px;
+	z-index: 30; 
+    transition: all .2s ease-in-out;
+}
+.headroom--unpinned {
+    top: -100px;
+}
+.headroom--pinned {
+    top: 0;
+}
+
+
+.footer {
+    position:fixed;
+    bottom: 0px;
+    padding:0px;
+    width:100%;
+    height: 40px;
+    background-image: "img/navbg.png";
+/*    z-index: 2;*/
+/*    background: ;*/
+/*    opacity: ;*/
+    
+/*	display: block;*/
+	height: 100px;
+	margin-left: 10%;
+/*	bottom: 0px;*/
+    z-index:20;
+    
+    transition: all .2s ease-in-out;
+}
+.footer--unpinned {
+    bottom: -100px;
+}
+.footer--pinned {
+    bottom: 0;
+}
+/*End of Headroom*/

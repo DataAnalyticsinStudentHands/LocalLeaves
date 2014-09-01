@@ -1,0 +1,9 @@
+{
+    "lib": {
+        "www": {
+            "id": "LocalLeaves",
+            "version": "3.5.0",
+            "uri": "https://github.com/orgs/DataAnalyticsinStudentHands"
+        }
+    }
+}
