@@ -1,4 +1,4 @@
-var plantServices = angular.module('plantServicesModule', ['restangular']);
+var plantServices = angular.module('localServicesModule', ['restangular']);
 plantServices.factory('localLeavesUserService', ['Restangular', '$q', '$filter', function(Restangular, $q, $filter) {
     var allUsers;
     var promAllUsers;

@@ -60,7 +60,7 @@ ADD: Total heigth and width, and set height and width of svg viewPort accordingl
 -->
             <g ng-repeat="icon in plantObjectModel.dataIcons[categType].icons"
                >
-            <image img-load
+            <image img-controls
                    hm-drag="moveRow(categType,$event)"
                    
                     class="rowImage"
@@ -68,13 +68,13 @@ ADD: Total heigth and width, and set height and width of svg viewPort accordingl
                     hm-swipe-right="swipeRow(categType,'right')"
                     ng-attr-x="{{200}}" 
                     ng-attr-y="{{40+(categPosition(categType)*190)}}" 
-                    height="100" width="100"  
-                    ng-attr-transform="{{iconTransform(categType,icon,'new')}}"
+                    ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"  
+                    ng-attr-transform="{{iconTransform(categType,icon)}}"
                     xlink:href="{{'img/'+icon+'.svg'}}"
             />
                 <path id="{{icon+'txtPth'}}" 
                       fill="none" stroke="none"
-                      ng-attr-transform="{{iconTransform(categType,icon,'new')}}"
+                      ng-attr-transform="{{iconTransform(categType,icon)}}"
                       ng-attr-d="M{{210}},{{120+(categPosition(categType)*190)}} s50,-15 100,0" />
             <text class="iconTitle" font-family="Verdana" 
                   font-size="15" fill="blue" 
@@ -91,12 +91,18 @@ ADD: Total heigth and width, and set height and width of svg viewPort accordingl
             </g>
             <!--below is not on top of vertical bars??-->
             <path class="fake-buttons"
+                  row-controls
                   hm-tap="swipeRow(categType,'left')"
+                  hm-swipe-left="swipeRow(categType,'left')"
+                  hm-swipe-right="swipeRow(categType,'right')"
                   ng-attr-d="M100,{{(190*$index)+10}} L220,{{(190*$index)+10}} L220,{{(190*$index)+190}} L120,{{(190*$index)+190}} z"
                   fill="white" opacity=".001"
             />
             <path class="fake-buttons"
+                  row-controls
                   hm-tap="swipeRow(categType,'right')"
+                  hm-swipe-left="swipeRow(categType,'left')"
+                  hm-swipe-right="swipeRow(categType,'right')"
                   ng-attr-d="M300,{{(190*$index)+10}} L400,{{(190*$index)+10}} L380,{{(190*$index)+190}} L300,{{(190*$index)+190}} z"
                   fill="white" opacity=".001"
             />

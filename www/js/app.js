@@ -1,7 +1,7 @@
 var localLeaves = angular.module('localLeaves', [
         'angular-gestures',
         'localLeavesControllerModule',
-        'plantServicesModule',
+        'localServicesModule',
         'ui.router',
         //'ui.bootstrap',
         'restangular'//,

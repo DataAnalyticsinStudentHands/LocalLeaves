@@ -21,25 +21,25 @@
             //pseudo-code:
             //numRows is determined from availHeight then assigned as an even number height and set at 100%;
             var numRows = $scope.numRows = 3;
-            $scope.iconTransform = function(categType,icon,selectDeg){
-                if (selectDeg=='new'){
-                    selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
-                }else{
-                    plantObjectModel.dataIcons[categType].selectDeg = selectDeg;
-                };
+            $scope.categPosition = function(categType){
+                var categs = plantObjectModel.dataIcons;
+                return categs.indexOf(categType);
+            };
+            $scope.iconControlTransform = function(categType,icon){ //should make it in a service??
+                var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
+                var refDeg = plantObjectModel.dataIcons[categType].refDeg;
                 var categNum = $scope.categPosition(categType);
                 var icons = plantObjectModel.dataIcons[categType].icons;
-                
+                if (selectDeg<0){
+                    selectDeg = 0;
+                };
                 var select = selectDeg/12; 
                 var centerLngth = Math.floor(icons.length/2); 
                 if (select>icons.length-1){
                     select = icons.length-1;
                 };
-                if (select<0){
-                    select = 0;
-                };
                 var indIcon = icons.indexOf(icon)-select;
-                var firstDeg = indIcon*12;
+                var firstDeg = indIcon*refDeg;
                 var rotateHt = 1100+(categNum*140);
                 var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
                 return rtn;
@@ -56,39 +56,43 @@
 //                //have to do this as a ng-model for the inputs
 //                //need to track what would have been on isolated scopes
 //            }
-            $scope.categPosition = function(categType){
-                var categs = plantObjectModel.dataIcons;
-                return categs.indexOf(categType);
-            };
+//            $scope.categPosition = function(categType){
+//                var categs = plantObjectModel.dataIcons;
+//                return categs.indexOf(categType);
+//            };
             
             $scope.moveRow = function(categType,$event){
-                var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
-                var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
-                var tempDeg = 0.1;
-                var icons = plantObjectModel.dataIcons[categType].icons;
-                if (tempDeg < maxDegrees){
-                    tempDeg -= $event.gesture.deltaX/36;
-                    console.log(tempDeg)
-                    plantObjectModel.dataIcons[categType].selectDeg = tempDeg;
-                    console.log(plantObjectModel.dataIcons[categType].selectDeg)
-                    for (var i = 0;i<icons.length;i++){
-                        $scope.iconTransform(categType,icons[i],'new');
+                if ($event.gesture.direction == 'left' || $event.gesture.direction == 'right' ){
+                    var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
+                    var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
+                    var tempDeg = 0.1;
+                    var icons = plantObjectModel.dataIcons[categType].icons;
+                    if (tempDeg < maxDegrees){
+                        tempDeg -= $event.gesture.deltaX/36;
+                        console.log(tempDeg)
+                        plantObjectModel.dataIcons[categType].selectDeg = tempDeg;
+//                        console.log(plantObjectModel.dataIcons[categType].selectDeg)
+//                        for (var i = 0;i<icons.length;i++){
+//                            $scope.iconControlTransform(categType,icons[i]);
+//                        }
                     }
-                }
-                //this would be for moving part of a degree - 12 is a full snap to position
-//                var dir = -4;
-//                if ( direction == 'left' ){
-//                    dir = 4
-//                };
-//                var startDegrees = plantObjectModel.dataIcons[categType].degrees;
-//                var iconLngth = plantObjectModel.dataIcons[categType].icons.length;
-//                var degrees = parseInt(startDegrees);
-//                if (Math.abs(startDegrees)/4 < iconLngth){
-//                    degrees += parseInt(dir);
-//                };
-//                console.log('deg'+degrees)
-//                plantObjectModel.dataIcons[categType].degrees = degrees;
-                
+                }else{
+                    var refDeg = plantObjectModel.dataIcons[categType].refDeg
+                    var newRef = $event.gesture.deltaY/300;
+                    if ($event.gesture.direction == 'up'){
+                        if ((refDeg + newRef) > 1){
+                            plantObjectModel.dataIcons[categType].refDeg = (refDeg + newRef);
+                        }else{
+                            plantObjectModel.dataIcons[categType].refDeg = 1;
+                        }
+                    }else{
+                        if ((refDeg - newRef) > 12){
+                            plantObjectModel.dataIcons[categType].refDeg = (refDeg - newRef);
+                        }else{
+                            plantObjectModel.dataIcons[categType].refDeg = 12;
+                        };
+                    };
+                };
             }
             $scope.swipeRow = function(categType,direction){
                 var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
@@ -104,7 +108,7 @@
                 plantObjectModel.dataIcons[categType].selectDeg = selectionDeg;
                 var icons = plantObjectModel.dataIcons[categType].icons;
                 for (var i = 0;i<icons.length;i++){
-                    $scope.iconTransform(categType,icons[i],'new');
+                    $scope.iconControlTransform(categType,icons[i]);
                 }
             }
             

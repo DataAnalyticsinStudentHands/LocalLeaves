@@ -5,6 +5,7 @@
             "details":"Region in which this plant is native",
             "search_use":["search", "user"],
             "selectDeg":36,
+            "refDeg":12,
             "icons":[
                 "native1",
                 "native2",
@@ -17,17 +18,27 @@
             "details":"Season it blooms",
             "search_use":["search"],
             "selectDeg":24,
+            "refDeg":12,
             "icons":[
-                "seasonspring",
-                "seasonsummer",
-                "seasonfall",
-                "seasonwinter"]
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "may",
+                "jun",
+                "jul",
+                "aug",
+                "sep",
+                "oct",
+                "nov",
+                "dec"]
         },
         "Soil_Conditions":{
             "pretty_title":"Water",
             "details":"Amount of water",
             "search_use":["search", "user", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "waterdrop_empty",
                 "waterdrop_half",
@@ -38,6 +49,7 @@
             "details":"Amount of sunglight",
             "search_use":["search", "user", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "sun_empty",
                 "sun_half",
@@ -48,6 +60,7 @@
             "details":"Speed of growth",
             "search_use":["user", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "grow1",
                 "grow2",
@@ -58,6 +71,7 @@
             "details":"The maintenance",
             "search_use":["search"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "maint1",
                 "maint2",
@@ -68,6 +82,7 @@
             "details":"Animal dangers",
             "search_use":["search"],
             "selectDeg":24,
+            "refDeg":12,
             "icons":[
                 "wildbee",
                 "wildbird",
@@ -79,6 +94,7 @@
             "details":"Type of plant",
             "search_use":["search"],
             "selectDeg":24,
+            "refDeg":12,
             "icons":[
                 "class1",
                 "class2",
@@ -90,6 +106,7 @@
             "details":"Where the plant is found",
             "search_use":["search", "rating"],
             "selectDeg":24,
+            "refDeg":12,
             "icons":[
                 "map1",
                 "map2",
@@ -101,6 +118,7 @@
             "details":"Height (ft)",
             "search_use":["rating"],
             "selectDeg":24,
+            "refDeg":12,
             "icons":[
                 "small",
                 "med",
@@ -112,6 +130,7 @@
             "details":"Width (ft)",
             "search_use":["rating"],
             "selectDeg":24,
+            "refDeg":12,
             "icons":[
                 "small",
                 "med",
@@ -123,6 +142,7 @@
             "details":"pH the plant prefers",
             "search_use":["search","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "0",
                 "6",
@@ -133,6 +153,7 @@
             "details":"Plant needs a constant supply of water ",
             "search_use":["rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "0",
                 "5",
@@ -143,6 +164,7 @@
             "details":"Space to plant between other plants",
             "search_use":["rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "0",
                 "5",
@@ -153,6 +175,7 @@
             "details":"Length underground that roots extend ",
             "search_use":["search", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "0",
                 "5",
@@ -163,6 +186,7 @@
             "details":"Speed of growth",
             "search_use":["user", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "slow",
                 "normal",
@@ -173,6 +197,7 @@
             "details":"Growth dependant planting time",
             "search_use":["rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "early",
                 "mid",
@@ -183,6 +208,7 @@
             "details":"Work needed to assist a plant grow",
             "search_use":["search", "user", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "easy",
                 "mid",
@@ -193,6 +219,7 @@
             "details":"Reason for planting",
             "search_use":["search", "user"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "fun",
                 "food",
@@ -203,6 +230,7 @@
             "details":"Plant that assists growth of another",
             "search_use":["rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "early",
                 "mid",
@@ -213,6 +241,7 @@
             "details":"Organizations that support certain plants",
             "search_use":["search", "user"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "A",
                 "B",
@@ -223,6 +252,7 @@
             "details":"Human propagated subspecies",
             "search_use":["searcg", "user", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "early",
                 "mid",
@@ -233,6 +263,7 @@
             "details":"Life span",
             "search_use":["search", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "early",
                 "mid",
@@ -243,6 +274,7 @@
             "details":"Season fruit is produced",
             "search_use":["search","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "spring",
                 "summer",
@@ -254,6 +286,7 @@
             "details":"Shape and type of seed",
             "search_use":["rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "small",
                 "mid",
@@ -264,6 +297,7 @@
             "details":"Larvae that live and feed off of this plant",
             "search_use":["search", "user", "rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "bug",
                 "bug2",
@@ -274,6 +308,7 @@
             "details":"Animals that feed off of this plant",
             "search_use":["serch", "user", "rating"],
             "selectDeg":24,
+            "refDeg":12,
             "icons":[
                 "small",
                 "mid",
@@ -284,6 +319,7 @@
             "details":"Any additional information",
             "search_use":["rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "bad",
                 "okay",
@@ -294,6 +330,7 @@
             "details":"Toxic parts of the plant",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "root",
                 "stem",
@@ -304,6 +341,7 @@
             "details":"Edible parts of the plant",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "root",
                 "stem",
@@ -314,6 +352,7 @@
             "details":"Can cause allergies",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "small",
                 "mid",
@@ -324,6 +363,7 @@
             "details":"Cleans the air",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "small",
                 "mid",
@@ -334,6 +374,7 @@
             "details":"Add more nutrients to soil",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "small",
                 "mid",
@@ -344,6 +385,7 @@
             "details":"Able to withstand weather extremes",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "small",
                 "mid",
@@ -354,6 +396,7 @@
             "details":"Pest resistance",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "weak",
                 "mid",
@@ -364,6 +407,7 @@
             "details":"Susceptibility to diseases",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "weak",
                 "mid",
@@ -374,6 +418,7 @@
             "details":"Susceptibility to cold temperatures",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "weak",
                 "mid",
@@ -384,6 +429,7 @@
             "details":"Susceptibility to min amounts of moisture",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "weak",
                 "mid",
@@ -394,6 +440,7 @@
             "details":"Susceptibility to max amounts of moisture",
             "search_use":["search","user","rating"],
             "selectDeg":12,
+            "refDeg":12,
             "icons":[
                 "weak",
                 "mid",
