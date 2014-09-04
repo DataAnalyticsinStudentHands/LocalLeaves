@@ -20,6 +20,11 @@ body {
     position:absolute;
     width:500px;
 }
+.notched-hide{
+    display:none;
+}
+.notched-normal{
+}
 /*HEADROOM*/
 .headroom {
     position: fixed;

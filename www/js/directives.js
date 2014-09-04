@@ -60,10 +60,21 @@ var loaded = {};
     }
   };
   })
-.directive('rowControls',function(plantObjectModel){
+.directive('rowControls',function(plantObjectModel){ //on main row in main.html
 var loaded = {};
   return {
     link: function(scope, element, attrs) {
+        scope.showNotchedLine = function(categType){
+            var iconsLngth = plantObjectModel.dataIcons[categType].icons.length
+            console.log('direct'+plantObjectModel.dataIcons[categType].icons.length)
+            console.log(categType)
+                if(iconsLngth > 5){
+                    return 'notched-normal'
+                }else{
+                    return 'notched-hide'
+                };
+            };
+        //element.on('click',function(){alert('rowControls click')})
     }
   }
 });

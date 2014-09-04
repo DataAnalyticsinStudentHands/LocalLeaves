@@ -3,7 +3,9 @@
     <svg id="fanWindow" width="600" ng-attr-height="{{windowHt}}"  ng-attr-viewBox="0 0 600 {{windowHt}}"
          xmlns="http://www.w3.org/2000/svg">
 <!--        <span ng-include="'img/feb.svg'"></span>-->
-        <g ng-repeat="categType in plantObjectModel.dataIcons | filter:q | limitTo:4">
+<!--        <g row-controls categ="{{categType}}" ng-repeat="categType in plantObjectModel.dataIcons | filter:q | limitTo:4">
+IF do row-controls, it would be to overlay whole rows for better responsiveness; move to bottom to be overlay-->
+        <g row-controls ng-repeat="categType in plantObjectModel.dataIcons | filter:q | limitTo:num2show">
             <path fill="none" stroke="#BD9E73" 
                   shape-rendering="optimizeQuality" 
                   stroke-width="16" 
@@ -62,7 +64,6 @@ ADD: Total heigth and width, and set height and width of svg viewPort accordingl
                >
             <image img-controls
                    hm-drag="moveRow(categType,$event)"
-                   
                     class="rowImage"
                     hm-swipe-left="swipeRow(categType,'left')"
                     hm-swipe-right="swipeRow(categType,'right')"
@@ -77,6 +78,7 @@ ADD: Total heigth and width, and set height and width of svg viewPort accordingl
                       ng-attr-transform="{{iconTransform(categType,icon)}}"
                       ng-attr-d="M{{210}},{{120+(categPosition(categType)*190)}} s50,-15 100,0" />
             <text class="iconTitle" font-family="Verdana" 
+                  ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"
                   font-size="15" fill="blue" 
                   text-anchor="middle" 
                   
@@ -89,9 +91,19 @@ ADD: Total heigth and width, and set height and width of svg viewPort accordingl
                 </textPath>
             </text>
             </g>
+            <path 
+                    class="{{showNotchedLine(categType)}}"
+                    hm-tap="alert(showNotchedLine(categType))"
+                    fill="none" stroke="#7387bd" stroke-width="6" 
+                    shape-rendering="optimizeQuality" 
+                    ng-attr-d="M{{25+($index*6)}},{{(190*$index)+165}} 
+                     s{{200-($index*6)}},-90 {{475-($index*12)}},0"
+                      >
+            </path>
+
             <!--below is not on top of vertical bars??-->
             <path class="fake-buttons"
-                  row-controls
+                 
                   hm-tap="swipeRow(categType,'left')"
                   hm-swipe-left="swipeRow(categType,'left')"
                   hm-swipe-right="swipeRow(categType,'right')"
@@ -99,7 +111,7 @@ ADD: Total heigth and width, and set height and width of svg viewPort accordingl
                   fill="white" opacity=".001"
             />
             <path class="fake-buttons"
-                  row-controls
+                
                   hm-tap="swipeRow(categType,'right')"
                   hm-swipe-left="swipeRow(categType,'left')"
                   hm-swipe-right="swipeRow(categType,'right')"

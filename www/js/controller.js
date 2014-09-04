@@ -20,7 +20,7 @@
             $scope.Sci = false;
             //pseudo-code:
             //numRows is determined from availHeight then assigned as an even number height and set at 100%;
-            var numRows = $scope.numRows = 3;
+            var num2show = $scope.num2show = 4;
             $scope.categPosition = function(categType){
                 var categs = plantObjectModel.dataIcons;
                 return categs.indexOf(categType);
@@ -60,6 +60,9 @@
 //                var categs = plantObjectModel.dataIcons;
 //                return categs.indexOf(categType);
 //            };
+//            $scope.setNewTrans = function(){
+//                $scope.plantObjectModel = plantObjectModel;
+//            }
             
             $scope.moveRow = function(categType,$event){
                 if ($event.gesture.direction == 'left' || $event.gesture.direction == 'right' ){
