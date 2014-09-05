@@ -1,24 +1,62 @@
 /* app css stylesheet */
 body {
 	padding: 0px;
-    background-color: #F5F0EA;
+    background-color: #68811e;
 /*	screenOrientation.autoRotate = 'Disabled';
     set some of this in config.xml?
     */
 }
-#categSearch{
-    position:absolute;
+/*
+#main {
+    position:relative;
+    border-style:dashed;
+    border-width:2px;
+    width:100%;
+    height:100%;
 }
-#main-wrapper{
+*/
+#honorsLogo{
     position:fixed;
-	width: 700px;
+    bottom:2%;
+    left:2%;
+    width:25%;
+}
+#DASHLogo{
+    position:fixed;
+    width:30%;
+    bottom:2%;
+    right:2%;
+}
+#categSearch{
+    position:relative;
+    float:right;
+}
+#searchImg{
+    position:absolute;
+    width:10%;
+    margin-top:-2%;
+}
+#main{
+    display:inline-block;
+    position:relative;
+	width: 100%;
     height: 100%;
 	padding-bottom: 25%;
+/*
+    border-style:dashed;
+    border-width:2px;
+*/
     overflow:hidden;
+    vertical-align:left;
 }
 #fanWindow{
-    position:absolute;
-    width:500px;
+    position:fixed;
+    display:block;
+    width:110%;
+    height:100%;
+}
+.rows{ /*svg g thus not much css will change*/
+    display:block;
 }
 .notched-hide{
     display:none;

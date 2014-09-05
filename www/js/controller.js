@@ -6,6 +6,8 @@
             
             $scope.plantObjectModel = plantObjectModel;
             var windowHt = $scope.windowHt = $window.outerHeight;
+            var windowWd = $scope.windowWd = $window.outerWidth;
+//            alert(windowWd)
 //            function touchHandlerDummy($event){  //seems to kill other stuff on page
 ////                        $event.preventDefault();
 ////                        return false;
@@ -17,33 +19,34 @@
             $scope.alert = function(text) {
                 alert(text);
             };
+            $scope.topFill = "#363465"
             $scope.Sci = false;
             //pseudo-code:
             //numRows is determined from availHeight then assigned as an even number height and set at 100%;
             var num2show = $scope.num2show = 4;
-            $scope.categPosition = function(categType){
-                var categs = plantObjectModel.dataIcons;
-                return categs.indexOf(categType);
-            };
-            $scope.iconControlTransform = function(categType,icon){ //should make it in a service??
-                var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
-                var refDeg = plantObjectModel.dataIcons[categType].refDeg;
-                var categNum = $scope.categPosition(categType);
-                var icons = plantObjectModel.dataIcons[categType].icons;
-                if (selectDeg<0){
-                    selectDeg = 0;
-                };
-                var select = selectDeg/12; 
-                var centerLngth = Math.floor(icons.length/2); 
-                if (select>icons.length-1){
-                    select = icons.length-1;
-                };
-                var indIcon = icons.indexOf(icon)-select;
-                var firstDeg = indIcon*refDeg;
-                var rotateHt = 1100+(categNum*140);
-                var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
-                return rtn;
-            };
+//            $scope.categPosition = function(categType){
+//                var categs = plantObjectModel.dataIcons;
+//                return categs.indexOf(categType);
+//            };
+//            $scope.iconControlTransform = function(categType,icon){ //should make it in a service??
+//                var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
+//                var refDeg = plantObjectModel.dataIcons[categType].refDeg;
+//                var categNum = $scope.categPosition(categType);
+//                var icons = plantObjectModel.dataIcons[categType].icons;
+//                if (selectDeg<0){
+//                    selectDeg = 0;
+//                };
+//                var select = selectDeg/12; 
+//                var centerLngth = Math.floor(icons.length/2); 
+//                if (select>icons.length-1){
+//                    select = icons.length-1;
+//                };
+//                var indIcon = icons.indexOf(icon)-select;
+//                var firstDeg = indIcon*refDeg;
+//                var rotateHt = 1100+(categNum*140);
+//                var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
+//                return rtn;
+//            };
 //            $scope.iconPosition = function(categType,icon){
 //                var icons = plantObjectModel.dataIcons[categType].icons;
 ////                var degrees = plantObjectModel.dataIcons[categType].degrees;
@@ -64,56 +67,52 @@
 //                $scope.plantObjectModel = plantObjectModel;
 //            }
             
-            $scope.moveRow = function(categType,$event){
-                if ($event.gesture.direction == 'left' || $event.gesture.direction == 'right' ){
-                    var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
-                    var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
-                    var tempDeg = 0.1;
-                    var icons = plantObjectModel.dataIcons[categType].icons;
-                    if (tempDeg < maxDegrees){
-                        tempDeg -= $event.gesture.deltaX/36;
-                        console.log(tempDeg)
-                        plantObjectModel.dataIcons[categType].selectDeg = tempDeg;
-//                        console.log(plantObjectModel.dataIcons[categType].selectDeg)
-//                        for (var i = 0;i<icons.length;i++){
-//                            $scope.iconControlTransform(categType,icons[i]);
+//            $scope.moveRow = function(categType,$event){
+//                if ($event.gesture.direction == 'left' || $event.gesture.direction == 'right' ){
+//                    var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
+//                    var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
+//                    var tempDeg = 0.1;
+//                    var icons = plantObjectModel.dataIcons[categType].icons;
+//                    if (tempDeg < maxDegrees){
+//                        tempDeg -= $event.gesture.deltaX/36;
+//                        console.log(tempDeg)
+//                        plantObjectModel.dataIcons[categType].selectDeg = tempDeg;
+//                    }
+//                }else{
+//                    var refDeg = plantObjectModel.dataIcons[categType].refDeg
+//                    var newRef = $event.gesture.deltaY/300;
+//                    if ($event.gesture.direction == 'up'){
+//                        if ((refDeg + newRef) > 1){
+//                            plantObjectModel.dataIcons[categType].refDeg = (refDeg + newRef);
+//                        }else{
+//                            plantObjectModel.dataIcons[categType].refDeg = 1;
 //                        }
-                    }
-                }else{
-                    var refDeg = plantObjectModel.dataIcons[categType].refDeg
-                    var newRef = $event.gesture.deltaY/300;
-                    if ($event.gesture.direction == 'up'){
-                        if ((refDeg + newRef) > 1){
-                            plantObjectModel.dataIcons[categType].refDeg = (refDeg + newRef);
-                        }else{
-                            plantObjectModel.dataIcons[categType].refDeg = 1;
-                        }
-                    }else{
-                        if ((refDeg - newRef) > 12){
-                            plantObjectModel.dataIcons[categType].refDeg = (refDeg - newRef);
-                        }else{
-                            plantObjectModel.dataIcons[categType].refDeg = 12;
-                        };
-                    };
-                };
-            }
-            $scope.swipeRow = function(categType,direction){
-                var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
-                var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
-                
-                if(direction == 'left' && (selectionDeg < maxDegrees)){
-                    selectionDeg += 12;
-                }
-                else if (direction == 'right' && (selectionDeg > 0)){
-                    selectionDeg += -12;
-                }
-                
-                plantObjectModel.dataIcons[categType].selectDeg = selectionDeg;
-                var icons = plantObjectModel.dataIcons[categType].icons;
-                for (var i = 0;i<icons.length;i++){
-                    $scope.iconControlTransform(categType,icons[i]);
-                }
-            }
+//                    }else{
+//                        if ((refDeg - newRef) > 12){
+//                            plantObjectModel.dataIcons[categType].refDeg = (refDeg - newRef);
+//                        }else{
+//                            plantObjectModel.dataIcons[categType].refDeg = 12;
+//                        };
+//                    };
+//                };
+//            }
+//            $scope.swipeRow = function(categType,direction){
+//                var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
+//                var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
+//                
+//                if(direction == 'left' && (selectionDeg < maxDegrees)){
+//                    selectionDeg += 12;
+//                }
+//                else if (direction == 'right' && (selectionDeg > 0)){
+//                    selectionDeg += -12;
+//                }
+//                
+//                plantObjectModel.dataIcons[categType].selectDeg = selectionDeg;
+//                var icons = plantObjectModel.dataIcons[categType].icons;
+//                for (var i = 0;i<icons.length;i++){
+//                    $scope.iconControlTransform(categType,icons[i]);
+//                }
+//            }
             
 			$scope.state = $state;
             

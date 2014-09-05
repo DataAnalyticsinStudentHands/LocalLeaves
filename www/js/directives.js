@@ -12,32 +12,34 @@ var loaded = {};
                 element.attr('xlink:href', 'img/blank.svg');
             });
           });
-        scope.categPosition = function(categType){
-                var categs = plantObjectModel.dataIcons;
-                return categs.indexOf(categType);
-            };
-        scope.imgHt = 10;
-        scope.iconTransform = function(categType,icon){
-            scope.imgHt = plantObjectModel.dataIcons[categType].refDeg * 8;
-            //element.attr('height',imgHt);
-            var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
-            var refDeg = plantObjectModel.dataIcons[categType].refDeg;
-            var categNum = scope.categPosition(categType);
-            var icons = plantObjectModel.dataIcons[categType].icons;
-            if (selectDeg<0){
-                selectDeg = 0;
-            };
-            var select = selectDeg/12; 
-            var centerLngth = Math.floor(icons.length/2); 
-            if (select>icons.length-1){
-                select = icons.length-1;
-            };
-            var indIcon = icons.indexOf(icon)-select;
-            var firstDeg = indIcon*refDeg;
-            var rotateHt = 1100+(categNum*140);
-            var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
-            return rtn;
-        };
+        //click on each image should move it to center - not sure how to do it
+        //dbl-click is for row-in-depth
+//        scope.categPosition = function(categType){
+//                var categs = plantObjectModel.dataIcons;
+//                return categs.indexOf(categType);
+//            };
+//        scope.imgHt = 10;
+//        scope.iconTransform = function(categType,icon){
+//            scope.imgHt = plantObjectModel.dataIcons[categType].refDeg * 8;
+//            //element.attr('height',imgHt);
+//            var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
+//            var refDeg = plantObjectModel.dataIcons[categType].refDeg;
+//            var categNum = scope.categPosition(categType);
+//            var icons = plantObjectModel.dataIcons[categType].icons;
+//            if (selectDeg<0){
+//                selectDeg = 0;
+//            };
+//            var select = selectDeg/12; 
+//            var centerLngth = Math.floor(icons.length/2); 
+//            if (select>icons.length-1){
+//                select = icons.length-1;
+//            };
+//            var indIcon = icons.indexOf(icon)-select;
+//            var firstDeg = indIcon*refDeg;
+//            var rotateHt = 1100+(categNum*140);
+//            var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
+//            return rtn;
+//        };
         
 //      element.bind('load', function() {
 //        loaded[element.attr('xlink:href')] = true;
@@ -64,6 +66,15 @@ var loaded = {};
 var loaded = {};
   return {
     link: function(scope, element, attrs) {
+        function touchHandlerDummy($event){ 
+            $event.preventDefault();
+            return false;
+        };
+        document.addEventListener("touchstart", touchHandlerDummy, false);
+        document.addEventListener("touchmove", touchHandlerDummy, false);
+        document.addEventListener("touchend", touchHandlerDummy, false);
+        document.addEventListener("mousedown", touchHandlerDummy, false);
+        
         scope.showNotchedLine = function(categType){
             var iconsLngth = plantObjectModel.dataIcons[categType].icons.length
             console.log('direct'+plantObjectModel.dataIcons[categType].icons.length)
@@ -74,6 +85,86 @@ var loaded = {};
                     return 'notched-hide'
                 };
             };
+        scope.categPosition = function(categType){
+                var categs = plantObjectModel.dataIcons;
+                return categs.indexOf(categType);
+            };
+        scope.imgHt = 10;
+        scope.iconTransform = function(categType,icon){
+            scope.imgHt = plantObjectModel.dataIcons[categType].refDeg * 8;
+            //element.attr('height',imgHt);
+            var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
+            var refDeg = plantObjectModel.dataIcons[categType].refDeg;
+            var categNum = scope.categPosition(categType);
+            var icons = plantObjectModel.dataIcons[categType].icons;
+            if (selectDeg<0){
+                selectDeg = 0;
+            };
+            var select = selectDeg/12; 
+            var centerLngth = Math.floor(icons.length/2); 
+            if (select>icons.length-1){
+                select = icons.length-1;
+            };
+            var indIcon = icons.indexOf(icon)-select;
+            var firstDeg = indIcon*refDeg;
+            var rotateHt = 1100+(categNum*140);
+            var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
+            return rtn;
+        };
+        scope.rot8 = function($event,windowWd,categType){
+            if((windowWd/2)>$event.gesture.center.pageX){
+                scope.swipeRow(categType,'left')
+            }else{
+                scope.swipeRow(categType,'right')
+            };
+        };
+        var tempDeg = .01;
+        scope.moveRow = function(categType,$event){
+            if ($event.gesture.direction == 'left' || $event.gesture.direction == 'right' ){
+                var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
+                var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
+//                var tempDeg = .01;
+                var icons = plantObjectModel.dataIcons[categType].icons;
+                if (tempDeg < maxDegrees){
+                    tempDeg -= $event.gesture.deltaX/42;
+                    plantObjectModel.dataIcons[categType].selectDeg = tempDeg;
+                }
+            }else{
+                var refDeg = plantObjectModel.dataIcons[categType].refDeg
+                var newRef = $event.gesture.deltaY/300;
+                if ($event.gesture.direction == 'up'){
+                    if ((refDeg + newRef) > 1){
+                        plantObjectModel.dataIcons[categType].refDeg = (refDeg + newRef);
+                    }else{
+                        plantObjectModel.dataIcons[categType].refDeg = 1;
+                    }
+                }else{
+                    if ((refDeg - newRef) > 12){
+                        plantObjectModel.dataIcons[categType].refDeg = (refDeg - newRef);
+                    }else{
+                        plantObjectModel.dataIcons[categType].refDeg = 12;
+                    };
+                };
+            };
+        };
+        scope.swipeRow = function(categType,direction){
+            var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
+            var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
+            
+            if(direction == 'left' && (selectionDeg < maxDegrees)){
+                selectionDeg += 12;
+            }
+            else if (direction == 'right' && (selectionDeg > 0)){
+                selectionDeg += -12;
+            }
+            
+            plantObjectModel.dataIcons[categType].selectDeg = selectionDeg;
+            var icons = plantObjectModel.dataIcons[categType].icons;
+            for (var i = 0;i<icons.length;i++){
+                scope.iconTransform(categType,icons[i]);
+            }
+            $event.gesture.stopDetect();
+        }
         //element.on('click',function(){alert('rowControls click')})
     }
   }
