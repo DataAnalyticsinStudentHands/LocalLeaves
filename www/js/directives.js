@@ -74,28 +74,33 @@ var loaded = {};
         document.addEventListener("touchmove", touchHandlerDummy, false);
         document.addEventListener("touchend", touchHandlerDummy, false);
         document.addEventListener("mousedown", touchHandlerDummy, false);
-        
+        var rowHt = scope.rowHt = 185;
         scope.showNotchedLine = function(categType){
             var iconsLngth = plantObjectModel.dataIcons[categType].icons.length
-            console.log('direct'+plantObjectModel.dataIcons[categType].icons.length)
-            console.log(categType)
+//            console.log('direct'+plantObjectModel.dataIcons[categType].icons.length)
+//            console.log(categType)
                 if(iconsLngth > 5){
                     return 'notched-normal'
                 }else{
                     return 'notched-hide'
                 };
-            };
-        scope.categPosition = function(categType){
-                var categs = plantObjectModel.dataIcons;
+        };
+        scope.categPosition = function(categType,typeTitle){
+                var categs = [];
+                for (var i=0;i<plantObjectModel.dataIcons[categType].search_use.length;i++){
+                    if (typeTitle==plantObjectModel.dataIcons[categType].search_use[i]){
+                        categs.push(categType)
+                    };
+                }; 
                 return categs.indexOf(categType);
-            };
+        };
         scope.imgHt = 10;
-        scope.iconTransform = function(categType,icon){
+        scope.iconTransform = function(categType,icon,typeTitle){
             scope.imgHt = plantObjectModel.dataIcons[categType].refDeg * 8;
             //element.attr('height',imgHt);
             var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
             var refDeg = plantObjectModel.dataIcons[categType].refDeg;
-            var categNum = scope.categPosition(categType);
+            var categNum = scope.categPosition(categType,typeTitle);
             var icons = plantObjectModel.dataIcons[categType].icons;
             if (selectDeg<0){
                 selectDeg = 0;
@@ -163,8 +168,9 @@ var loaded = {};
             for (var i = 0;i<icons.length;i++){
                 scope.iconTransform(categType,icons[i]);
             }
-            $event.gesture.stopDetect();
+            
         }
+
         //element.on('click',function(){alert('rowControls click')})
     }
   }

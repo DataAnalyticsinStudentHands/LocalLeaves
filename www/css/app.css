@@ -6,15 +6,21 @@ body {
     set some of this in config.xml?
     */
 }
-/*
-#main {
+#main{
+    display:inline-block;
     position:relative;
+	width: 100%;
+    height: 100%;
+	padding-bottom: 15%;
+    margin-right:2%;
+/*
     border-style:dashed;
     border-width:2px;
-    width:100%;
-    height:100%;
-}
 */
+    overflow:hidden;
+    vertical-align:left;
+}
+/*
 #honorsLogo{
     position:fixed;
     bottom:2%;
@@ -27,32 +33,24 @@ body {
     bottom:2%;
     right:2%;
 }
+*/
 #categSearch{
     position:relative;
     float:right;
 }
+/*
 #searchImg{
     position:absolute;
     width:10%;
     margin-top:-2%;
 }
-#main{
-    display:inline-block;
-    position:relative;
-	width: 100%;
-    height: 100%;
-	padding-bottom: 25%;
-/*
-    border-style:dashed;
-    border-width:2px;
 */
-    overflow:hidden;
-    vertical-align:left;
-}
+
 #fanWindow{
     position:fixed;
+    left:10px;
     display:block;
-    width:110%;
+    width:100%;
     height:100%;
 }
 .rows{ /*svg g thus not much css will change*/
@@ -62,6 +60,12 @@ body {
     display:none;
 }
 .notched-normal{
+}
+/*http://www.dnasir.com/2013/10/09/display-mode-detection-for-responsive-websites-using-angularjs/*/
+@media (min-width: 300px) {
+    #rightSide{
+        display:none;
+    }
 }
 /*HEADROOM*/
 .headroom {

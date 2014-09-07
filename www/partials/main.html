@@ -2,147 +2,149 @@
 hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
 -->
     
-    <svg id="fanWindow" preserveAspectRatio="xMinYMin meet" viewBox="0 0 600 {{num2show*230}}"
+    <svg id="fanWindow" preserveAspectRatio="xMinYMin meet" viewBox="0 0 {{rightSide+40}} {{yOff}}"
          xmlns="http://www.w3.org/2000/svg">
-        
-        <path stroke="{{topFill}}" fill="#F5F0EA" stroke-width="2" d="M0,0 l510,0 l0,{{(num2show*230)-70}} l-510,0 z"></path>
-        <path fill="{{topFill}}" stroke="#A4AF3A" d="M0,0 l510,0 l0,65 s-255,-50 -510,0 z"></path>
-<!--
-    <svg id="fanWindow" ng-attr-width="{{windowWd}}" ng-attr-height="{{windowHt}}"  ng-attr-viewBox="0 0 {{windowWd}} {{windowHt}}"
-         xmlns="http://www.w3.org/2000/svg">
--->
-<!--        <span ng-include="'img/feb.svg'"></span>-->
-<!--        <g row-controls categ="{{categType}}" ng-repeat="categType in plantObjectModel.dataIcons | filter:q | limitTo:4">
-IF do row-controls, it would be to overlay whole rows for better responsiveness; move to bottom to be overlay-->
-<!--
+        <path id="rightSideMask" ng-if="notMobile"
+              fill="{{topFill}}"
+              ng-attr-d="M{{rightSide-10}},0 l150,0 l0,{{yOff+135}} l-150,0 z">
+        </path>
+        <path id="bckGround" stroke="{{topFill}}" 
+              fill="#F5F0EA" stroke-width="2" 
+              ng-attr-d="M0,0 l{{rightSide}},0 l{{-(num2show*6)}},{{yOff+100}} l{{(num2show*12)-rightSide}},0 z">
+        </path>
+
+        <path id="topBar" fill="{{topFill}}" 
+              hm-tap="alert(rowHt)"
+              ng-attr-d="M0,0 l{{rightSide}},0 l0,65 s{{-rightSide/2}},-50 {{-rightSide}},0 z">
+        </path>
+        <path id="bottomBar" fill="{{topFill}}" 
+              ng-attr-d="M{{(num2show*3)}},{{yOff+60}} l{{rightSide-(num2show*6)}},0 l0,75 {{(num2show*6)-rightSide}},0 z">
+        </path>
+        <image id="searchImg" 
+               x="5"
+               y="5"
+               width="60"
+               height="60"
+               xlink:href="img/search.png" 
+               hm-tap="showSrch=!showSrch"/>
+
         <defs>
             <linearGradient id="gradHoriz" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="90%" style="stop-color:#BD9E73;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                <stop offset="10%" style="stop-color:{{topFill}};stop-opacity:1" />
+                <stop offset="20%" style="stop-color:#68811e;stop-opacity:1" />
             </linearGradient>
         </defs>
-url(#gradHoriz)
--->
-<!--
+        
+        <g id="verticals">
+            <path  
+                  fill="none" stroke="#BD9E73" 
+                  stroke-width="16"
+                  ng-attr-d="M{{rightSide*.3}},8 L{{(rightSide*.31)+(num2show*3)}},{{yOff+20}}">
+            </path>
+            <path 
+                  fill="none" stroke="#BD9E73" 
+                  stroke-width="16"
+                  ng-attr-d="M{{rightSide*.7}},8 L{{(rightSide*.69)-(num2show*4)}},{{yOff+20}}">
+            </path>
+            
+        </g>
+
         <path id="titleBar" fill="none" stroke="#BD9E73" 
                   shape-rendering="optimizeQuality" 
                   stroke-width="34" 
-                  d="M140,25 s100,-15 220,0" />
-        <text font-family="Verdana" 
-                  font-size="18" fill="blue" 
+                  ng-attr-d="M{{rightSide*.3}},25 s{{rightSide*.2}},-15 {{rightSide*.4}},0" />
+        <path id="titleBarTxt" fill="none" stroke="#BD9E73" 
+                  shape-rendering="optimizeQuality" 
+                  stroke-width="34" 
+                  ng-attr-d="M{{rightSide*.3}},40 s{{rightSide*.2}},-15 {{rightSide*.4}},0" />
+        <path id="titleBarUnder" fill="none" stroke="{{topFill}}" 
+                  shape-rendering="optimizeQuality" 
+                  stroke-width="6" 
+                  ng-attr-d="M{{rightSide*.29}},48 s{{rightSide*.2}},-15 {{rightSide*.42}},0" />
+        <text font-family="Arial, Helvetica, sans-serif" 
+                  font-size="30" fill="{{topFill}}" 
                   text-anchor="middle" 
                 >
-            <textPath xlink:href="#titleBar"
+            <textPath xlink:href="#titleBarTxt"
                           startOffset="50%" 
                 >
-            Title</text>
--->
+            {{typeTitle}}</text>
         <g class="rows" row-controls 
-            hm-swipe-left="swipeRow(categType,'left')"
-            hm-swipe-right="swipeRow(categType,'right')"
-            hm-drag="moveRow(categType,$event)"
-            ng-repeat="categType in plantObjectModel.dataIcons | filter:q | limitTo:num2show" >
-            
-            <path fill="none" stroke="#BD9E73" 
+                hm-swipe-left="swipeRow(categType,'left')"
+                hm-swipe-right="swipeRow(categType,'right')"
+                hm-drag="moveRow(categType,$event)"
+                ng-repeat="categType in plantObjectModel.dataIcons | 
+                           filter:matchCat  | 
+                           limitTo:num2show" >
+            <path class="rowUnderScores" fill="none" stroke="#BD9E73" stroke-width="2" 
+                  ng-show="!$first"
+                  shape-rendering="optimizeQuality" 
+                  ng-attr-d="M{{(rightSide*.05)+($index*6)}},{{(rowHt*$index)+86}} 
+                     s{{rightSide*.45}},-90 {{(rightSide*.90)-($index*12)}},0" /> 
+            <path class="rowTitles" 
+                  hm-tap="alert(plantObjectModel.dataIcons[categType].search_use)"
+                  fill="none" stroke="#BD9E73" 
                   stroke-width="36"  
                   shape-rendering="optimizeQuality" 
-                  ng-attr-d="M{{145+($index*4)}},{{(190*$index)+40}} 
-                     s{{100-($index*4)}},-15 {{210-($index*8)}},0" />
-            <path fill="none" stroke="#e8d9c3" stroke-width="2" 
+                  ng-attr-d="M{{(rightSide*.3)+($index*4)}},{{(rowHt*$index)+70}} 
+                     s{{rightSide*.2}},-15 {{(rightSide*.4)-($index*8)}},0" />
+            <path class="rowTitleTxtPaths" fill="none" stroke="none" 
+                  id="{{categType+'txtPth'}}"
+                  stroke-width="4"  
                   shape-rendering="optimizeQuality" 
-                  ng-attr-d="M{{25+($index*6)}},{{(190*$index)+245}} 
-                     s{{200-($index*6)}},-90 {{475-($index*12)}},0" />
-            <path id="{{categType+'txtPth'}}" 
-                  fill="none" stroke="none"
-                  ng-attr-d="M{{150+($index*4)}},{{(190*$index)+45}} 
-                     s{{100-($index*4)}},-25 {{200-($index*8)}},0">
-            </path>
-
-<!--
-            <path ng-repeat-end 
-                  fill="none" stroke="#BD9E73" 
-                  stroke-width="16"
-                  ng-attr-d="M150,25 L{{155+($index*4)}},{{(190*$index)+190}}">
-            </path>
-            <path ng-repeat-end 
-                  fill="none" stroke="#BD9E73" 
-                  stroke-width="16"
-                  ng-attr-d="M350,25 L{{350-($index*4)}},{{(190*$index)+190}}">
-            </path>
--->
-                  
-            <text class="prettyTitle" font-family="Verdana" 
-                  font-size="15" fill="blue" 
-                  text-anchor="middle" 
-                >
+                  ng-attr-d="M{{(rightSide*.3)+($index*4)}},{{(rowHt*$index)+80}} 
+                     s{{rightSide*.2}},-15 {{(rightSide*.4)-($index*8)}},0" />
+                             
+            <text class="prettyTitle" font-family="Arial, Helvetica, sans-serif" 
+                  font-size="30" fill="{{topFill}}" 
+                  ng-attr-alignment-baseline="central"
+                  text-anchor="middle" >
                 <textPath xlink:href="{{'#'+categType+'txtPth'}}"
-                          startOffset="50%" 
-                          >
+                          startOffset="50%">
                     {{plantObjectModel.dataIcons[categType].pretty_title}}
                 </textPath>
             </text>
             
-<!--
-            <g ng-repeat="icon in plantObjectModel.dataIcons[categType].icons"
-                class="{{'img/'+icon+'.svg'}}"
-                ng-include="'{{img/dec.svg}}'"
-                ng-click="alert('should explain category')"
-                ng-swipe-left="swipeRow(categType,'left')"
-                ng-swipe-right="swipeRow(categType,'right')"
-                ng-attr-x="{{200}}" 
-                ng-attr-y="{{180+(categPosition(categType)*190)}}" 
-                height="120" width="120"  
-                ng-attr-transform="{{iconTransform(categType,icon)}}"
-            ></g>
-
-ADD: Total heigth and width, and set height and width of svg viewPort accordingly? then make it 100% on surrounding, and have width filled with other stuff?
-hm-swipe-left="swipeRow(categType,'left')"
-                    hm-swipe-right="swipeRow(categType,'right')"
-hm-drag="moveRow(categType,$event)"
--->
-            <g ng-repeat="icon in plantObjectModel.dataIcons[categType].icons"
+            <g id="selectionImages" ng-repeat="icon in plantObjectModel.dataIcons[categType].icons"
                >
-            <image img-controls
-                   
-                    class="rowImage"
-                    
-                    ng-attr-x="{{200}}" 
-                    ng-attr-y="{{70+(categPosition(categType)*190)}}" 
-                    ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"  
-                    ng-attr-transform="{{iconTransform(categType,icon)}}"
-                    xlink:href="{{'img/'+icon+'.svg'}}"
-            />
+                <image img-controls
+                       
+                        class="rowImage {{iconTransform(categType,icon,typeTitle)}}"
+                        
+                        ng-attr-x="{{rightSide*.4}}" 
+                        ng-attr-y="{{100+(categPositionContrl(categType)*rowHt)}}" 
+                        ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"  
+                        ng-attr-transform="{{iconTransform(categType,icon,typeTitle)}}"
+                        xlink:href="{{'img/'+icon+'.svg'}}"
+                />
                 <path id="{{icon+'txtPth'}}" 
                       fill="none" stroke="none"
-                      ng-attr-transform="{{iconTransform(categType,icon)}}"
-                      ng-attr-d="M{{210}},{{120+(categPosition(categType)*190)}} s50,-15 100,0" />
-            <text class="iconTitle" font-family="Verdana" 
-                  ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"
-                  font-size="15" fill="blue" 
-                  text-anchor="middle" 
-                  
-                >
-                <textPath xlink:href="{{'#'+icon+'txtPth'}}"
-                          startOffset="50%" 
-                          
-                          >
-                    {{icon}}
-                </textPath>
-            </text>
+                      ng-attr-transform="{{iconTransform(categType,icon,typeTitle)}}"
+                      ng-attr-d="M{{rightSide*.4}},{{170+(categPositionContrl(categType)*rowHt)}} s{{rightSide*.1}},-15 {{rightSide*.2}},0" />
+                <text class="iconTitle" font-family="Verdana" 
+                      ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"
+                      font-size="15" fill="blue" 
+                      text-anchor="middle" 
+                    >
+                    <textPath xlink:href="{{'#'+icon+'txtPth'}}"
+                              startOffset="50%" >
+                        {{icon}}
+                    </textPath>
+                </text>
             
             </g>
             <path class="arrowsLeft" fill="white" fill-opacity=".001"
-                  stroke="#e8d9c3" stroke-width="7" 
+                  stroke="#BD9E73" stroke-width="7" 
                   shape-rendering="optimizeQuality" 
-                  ng-attr-d="M{{35+($index*6)}},{{(190*$index)+75}} 
+                  ng-attr-d="M{{(rightSide*.075)+($index*6)}},{{(rowHt*$index)+105}} 
                      l-20,20 l20,20"
                   hm-tap="swipeRow(categType,'left')"
                   >
             </path>
             <path class="arrowsRight" fill="white" fill-opacity=".001"
-                  stroke="#e8d9c3" stroke-width="7" 
+                  stroke="#BD9E73" stroke-width="7" 
                   shape-rendering="optimizeQuality" 
-                  ng-attr-d="M{{485-($index*6)}},{{(190*$index)+75}} 
+                  ng-attr-d="M{{(rightSide*.925)-($index*6)}},{{(rowHt*$index)+105}} 
                      l20,20 l-20,20"
                   hm-tap="swipeRow(categType,'right')"
                   
@@ -164,62 +166,113 @@ hm-drag="moveRow(categType,$event)"
             <path class="centerGlass"
                   hm-tap="rot8($event,{{windowWd}},categType)"
                   
-                  ng-attr-d="M{{145+($index*4)}},{{(190*$index)+58}} 
-                     s{{100-($index*4)}},-15 {{210-($index*8)}},0 L{{350-($index*8)}},{{(190*($index+1))+40}} l-{{(190-($index*8))}},0 z"
-                  fill="#0d13a0" opacity=".10"
+                  ng-attr-d="M{{(rightSide*.31)+($index*4)}},{{(rowHt*$index)+87}} 
+                     s{{(rightSide*.22)-($index*4)}},-15 {{(rightSide*.37)-($index*8)}},0 L{{(rightSide*.68)-($index*4)}},{{(rowHt*($index+1))+70}} s{{($index*4)-rightSide*.18}},-10 {{($index*8)-(rightSide*.36)}},0 z"
+                  fill="#0d13a0" opacity=".08"
             />
-<!--
-            <path class="fake-buttons"
-                
-                  hm-tap="swipeRow(categType,'right')"
-                  hm-swipe-left="swipeRow(categType,'left')"
-                  hm-swipe-right="swipeRow(categType,'right')"
-                  ng-attr-d="M300,{{(190*$index)+10}} L400,{{(190*$index)+10}} L380,{{(190*$index)+190}} L300,{{(190*$index)+190}} z"
-                  fill="white" opacity=".001"
-            />
--->
             
         </g>
-        <g id="verticals">
-            <path  
-                  fill="none" stroke="#BD9E73" 
-                  stroke-width="16"
-                  ng-attr-d="M150,25 L{{155+(num2show*3)}},{{(190*num2show)+20}}">
+        
+        <g id="sideButtons">
+            <path id="myGarden"
+                  fill="#A4AF3A" stroke="#2a2927"
+                  stroke-width="1"
+                  ng-attr-d="M{{(rightSide*.31)+(num2show*2)}},{{yOff+15}} s-160,25 20,100 z">
             </path>
-            <path 
-                  fill="none" stroke="#BD9E73" 
-                  stroke-width="16"
-                  ng-attr-d="M350,25 L{{350-(num2show*4)}},{{(190*num2show)+20}}">
+            <path id="myGardenTxt"
+                  fill="none" stroke="none"
+                  ng-attr-d="M{{(rightSide*.31)+(num2show*2)}},{{yOff+85}} s-80,5 -10,-70">
             </path>
-            
+            <text class="tempUntilBetter" font-family="Verdana" 
+                  font-size="15" fill="blue" 
+                  text-anchor="middle" 
+                >
+                <textPath xlink:href="#myGardenTxt"
+                          startOffset="50%" 
+                          >
+                    My Garden
+                </textPath>
+            </text>
+            <path id="otherGardens"
+                  fill="#A4AF3A" stroke="#2a2927"
+                  stroke-width="1"
+                  ng-attr-d="M{{(rightSide*.69)-(num2show*2)}},{{yOff+15}} s160,25 -20,100 z">
+            </path>
+            <path id="otherGardensTxt"
+                  fill="none" stroke="none"
+                  ng-attr-d="M{{(rightSide*.7)-(num2show*2)}},{{yOff+35}} s80,15 -10,60">
+            </path>
+            <text class="tempUntilBetter" font-family="Verdana" 
+                  font-size="15" fill="blue" 
+                  text-anchor="middle" 
+                >
+                <textPath xlink:href="#otherGardensTxt"
+                          startOffset="50%" 
+                          >
+                    OtherGardens
+                </textPath>
+            </text>
         </g>
         <g id="logoButton">
             <path  
+                  hm-tap="alert('this will also submit')"
                   fill="#A4AF3A" stroke="#2a2927" 
                   stroke-width="1"
-                  ng-attr-d="M154,{{(190*num2show)-5}} S245,{{(190*num2show)-55}} {{365-(num2show*4)}},{{(190*num2show)-5}} 
-                            l-12,120 s-90,15 -170,0 z">
+                  ng-attr-d="M{{(rightSide*.3)+(num2show*2)}},{{yOff+5}} S{{rightSide/2}},{{yOff-55}} {{(rightSide*.7)-(num2show*2)}},{{yOff+5}} 
+                            l{{-((num2show*2)+12)}},120 s-90,15 {{(num2show*4)-(rightSide*.32)}},0 z">
             </path>
             <image xlink:href="img/ll_search.svg"  
+                   hm-tap="alert('this will submit')"
                 height="100" width="100"
-                   ng-attr-x="{{180+(num2show*3)}}"
-                   ng-attr-y="{{(190*num2show)}}"
+                   ng-attr-x="{{(rightSide*.38)+(num2show*2)}}"
+                   ng-attr-y="{{yOff}}"
                    />
+        </g>
+        
+        <g id="Rlogos">
             <image xlink:href="img/DASHlogo.png"  
-                height="100" width="200"
-                   ng-attr-x="{{330+(num2show*3)}}"
-                   ng-attr-y="{{(190*num2show)}}"
+                height="80" ng-attr-width="{{140-(num2show*4)}}"
+                   ng-attr-x="{{(rightSide*.74)+(num2show*3)}}"
+                   ng-attr-y="{{70+yOff}}"
                    />
             <image xlink:href="img/honors.png"  
-                height="90" width="140"
-                   ng-attr-x="{{(num2show*3)}}"
-                   ng-attr-y="{{(190*num2show)}}"
+                height="90" ng-attr-width="{{140-(num2show*4)}}"
+                   ng-attr-x="{{10+(num2show*2)}}"
+                   ng-attr-y="{{65+yOff}}"
                    />
+        </g>
+        <path id="rightMask" fill="#68811e"
+              ng-attr-d="M{{rightSide}},0 l1500,0 l0,1500 l-1500,0 z">
+        </path>
+              
+        <g id="rightSide">
+            <path id="rightSideBack" 
+                  ng-if="rightSideShow"
+                  stroke="{{topFill}}"
+                  fill="#F5F0EA" stroke-width="2"
+                  ng-attr-d="M{{rightSide}},0 l1500,0 l{{-(num2show*8)}},{{yOff+135}} l-1500,0 z">
+            </path>
+            <g id="rightSideClosed"
+                  ng-if="!rightSideShow">
+                <path id="rightBar"
+                      fill="url(#gradHoriz)"
+                      ng-attr-d="M{{rightSide}},0 l350,0 l{{-(num2show*8)}},{{yOff+135}} l-350,0 z">
+                </path>
+                <path id="rightSideDrawer" class="notSureTrying2Things"
+                      stroke="red" stroke-width="4"
+                      ng-attr-d="M{{rightSide+15}},100 s-15,{{(yOff-100)/2}} 0,{{yOff-100}} z">
+                </path> 
+            </g>
         </g>
     </svg>
 
-<img id="searchImg" src="img/search.png" hm-tap="showSrch=!showSrch"/>
+<!--
+ng-repeat="categType in plantObjectModel.dataIcons | 
+                           filter:q | limitTo:num2show"
+-->
 	<input id="categSearch" ng-show="showSrch" type="search" size="12" ng-model="q" placeholder="filter searches..." />
+<!--
 <img id="honorsLogo" src="img/honors.png" />
 <img id="DASHLogo" src="img/DASHlogo.png" />
+-->
     

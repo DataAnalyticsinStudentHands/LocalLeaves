@@ -7,6 +7,12 @@
             $scope.plantObjectModel = plantObjectModel;
             var windowHt = $scope.windowHt = $window.outerHeight;
             var windowWd = $scope.windowWd = $window.outerWidth;
+            
+            var num2show = $scope.num2show = Math.floor(windowHt/185);
+            var rowHt = $scope.rowHt = windowHt/num2show;
+            //console.log(rowHt)
+            
+            $scope.yOff = num2show*rowHt; //needs to match for $index on images
 //            alert(windowWd)
 //            function touchHandlerDummy($event){  //seems to kill other stuff on page
 ////                        $event.preventDefault();
@@ -19,11 +25,58 @@
             $scope.alert = function(text) {
                 alert(text);
             };
-            $scope.topFill = "#363465"
+            var typeTitle = $scope.typeTitle = 'rating';
+            $scope.matchCat = function(category){
+                var included = false;
+                for (var i=0;i<plantObjectModel.dataIcons[category].search_use.length;i++){
+                    if (typeTitle==plantObjectModel.dataIcons[category].search_use[i]){
+                        included=true;
+                    };
+                };
+                return included;
+            };
+            $scope.categPositionContrl = function(categType){
+                var categs = [];
+                //NEED THIS AND THE DIRECTIVE TO GO THROUGH THE OBJECTS THEN PUSH FOR NEW LIST
+                for (var i=0;i<plantObjectModel.dataIcons[categType].search_use.length;i++){
+                    if (typeTitle==plantObjectModel.dataIcons[categType].search_use[i]){
+                        categs.push(categType)
+                    };
+                }; 
+                console.log(categs.indexOf(categType))
+                return categs.indexOf(categType);
+            }
+            $scope.topFill = "#363465";
+//            $scope.frameFill = "#8d309f";
             $scope.Sci = false;
+            var rightSideShow = false;
+            
+            var rightSide = $scope.rightSide = 540;
+            //call this "leftSd" and use throughout Main.html divided in half, etc.
+//            console.log($window.onresize);
+            var windowSize = function(){
+                windowHt = $scope.windowHt = document.documentElement.clientHeight; //$window.outerHeight;
+//                console.log(document.documentElement.clientWidth);
+                windowWd = $scope.windowWd = document.documentElement.clientWidth; //$window.outerWidth;
+//                console.log(windowWd+ "ww")
+                num2show = $scope.num2show = Math.floor(windowHt/185)+1;
+                rowHt = $scope.rowHt = windowHt/num2show;
+                $scope.yOff = num2show*200; 
+                if(windowHt/windowWd < 1.7){
+                    rightSideShow = true;
+                }else{
+                    rightSideShow = false;
+                };
+                    $scope.rightSideShow = rightSideShow;
+            };
+            windowSize();
+            angular.element($window).bind("resize", function() {
+                windowSize();
+                $scope.$apply();
+            });
             //pseudo-code:
             //numRows is determined from availHeight then assigned as an even number height and set at 100%;
-            var num2show = $scope.num2show = 4;
+//            var num2show = $scope.num2show = (windowHt+180)/180;
 //            $scope.categPosition = function(categType){
 //                var categs = plantObjectModel.dataIcons;
 //                return categs.indexOf(categType);
