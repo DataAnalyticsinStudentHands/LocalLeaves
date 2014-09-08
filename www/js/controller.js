@@ -26,7 +26,14 @@
                 alert(text);
             };
             var typeTitle = $scope.typeTitle = 'rating';
+//            var categInput = document.getElementById('logoButton');
+//        categInput.onclick = function(){
+//            $scope.$digest();
+////            console.log('change');
+////            location.reload();
+//        };
             $scope.matchCat = function(category){
+                //var category = this;
                 var included = false;
                 for (var i=0;i<plantObjectModel.dataIcons[category].search_use.length;i++){
                     if (typeTitle==plantObjectModel.dataIcons[category].search_use[i]){
@@ -35,17 +42,21 @@
                 };
                 return included;
             };
-            $scope.categPositionContrl = function(categType){
-                var categs = [];
-                //NEED THIS AND THE DIRECTIVE TO GO THROUGH THE OBJECTS THEN PUSH FOR NEW LIST
-                for (var i=0;i<plantObjectModel.dataIcons[categType].search_use.length;i++){
-                    if (typeTitle==plantObjectModel.dataIcons[categType].search_use[i]){
-                        categs.push(categType)
-                    };
-                }; 
-                console.log(categs.indexOf(categType))
-                return categs.indexOf(categType);
-            }
+//            $scope.categPositionContrl = function(categType){
+//                var categs = [];
+//                //create a file with the right index, and then search against it!!
+//                for (var i=0; i < plantObjectModel.dataIcons.length; i++){
+//                    var categKey = plantObjectModel.dataIcons[i];
+//                    var object = plantObjectModel.dataIcons[categKey];
+//                    for (var k=0;k<plantObjectModel.dataIcons[categType].search_use.length;k++){
+//                        if (typeTitle==plantObjectModel.dataIcons[categType].search_use[k]){
+//                            categs.push(categType)
+//                        };
+//                    };
+//                }; 
+//                console.log(categs.indexOf(categType))
+//                return categs.indexOf(categType);
+//            }
             $scope.topFill = "#363465";
 //            $scope.frameFill = "#8d309f";
             $scope.Sci = false;
@@ -54,6 +65,10 @@
             var rightSide = $scope.rightSide = 540;
             //call this "leftSd" and use throughout Main.html divided in half, etc.
 //            console.log($window.onresize);
+            $scope.$watch('typeTitle',function(newValue,oldValue){
+                $scope.num2show = num2show;
+                $scope.matchCat = matchCat;
+            });
             var windowSize = function(){
                 windowHt = $scope.windowHt = document.documentElement.clientHeight; //$window.outerHeight;
 //                console.log(document.documentElement.clientWidth);

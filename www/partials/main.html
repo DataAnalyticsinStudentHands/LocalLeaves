@@ -2,7 +2,7 @@
 hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
 -->
     
-    <svg id="fanWindow" preserveAspectRatio="xMinYMin meet" viewBox="0 0 {{rightSide+40}} {{yOff}}"
+    <svg id="fanWindow" preserveAspectRatio="xMinYMin meet" viewBox="0 0 {{rightSide+40}} {{yOff+170}}"
          xmlns="http://www.w3.org/2000/svg">
         <path id="rightSideMask" ng-if="notMobile"
               fill="{{topFill}}"
@@ -69,12 +69,13 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                           startOffset="50%" 
                 >
             {{typeTitle}}</text>
-        <g class="rows" row-controls 
+        <g class="rows" row-controls
                 hm-swipe-left="swipeRow(categType,'left')"
                 hm-swipe-right="swipeRow(categType,'right')"
                 hm-drag="moveRow(categType,$event)"
+                ng-model="typeTitle"
                 ng-repeat="categType in plantObjectModel.dataIcons | 
-                           filter:matchCat  | 
+                           filter:matchCat |
                            limitTo:num2show" >
             <path class="rowUnderScores" fill="none" stroke="#BD9E73" stroke-width="2" 
                   ng-show="!$first"
@@ -109,18 +110,18 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                >
                 <image img-controls
                        
-                        class="rowImage {{iconTransform(categType,icon,typeTitle)}}"
+                        class="rowImage"
                         
                         ng-attr-x="{{rightSide*.4}}" 
-                        ng-attr-y="{{100+(categPositionContrl(categType)*rowHt)}}" 
+                        ng-attr-y="{{100+($parent.$index*rowHt)}}" 
                         ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"  
-                        ng-attr-transform="{{iconTransform(categType,icon,typeTitle)}}"
+                        ng-attr-transform="{{iconTransform(categType,$parent.$index,$index)}}"
                         xlink:href="{{'img/'+icon+'.svg'}}"
                 />
                 <path id="{{icon+'txtPth'}}" 
                       fill="none" stroke="none"
-                      ng-attr-transform="{{iconTransform(categType,icon,typeTitle)}}"
-                      ng-attr-d="M{{rightSide*.4}},{{170+(categPositionContrl(categType)*rowHt)}} s{{rightSide*.1}},-15 {{rightSide*.2}},0" />
+                      ng-attr-transform="{{iconTransform(categType,$parent.$index,$index)}}"
+                      ng-attr-d="M{{rightSide*.4}},{{170+($parent.$index*rowHt)}} s{{rightSide*.1}},-15 {{rightSide*.2}},0" />
                 <text class="iconTitle" font-family="Verdana" 
                       ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"
                       font-size="15" fill="blue" 
@@ -177,6 +178,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             <path id="myGarden"
                   fill="#A4AF3A" stroke="#2a2927"
                   stroke-width="1"
+                  hm-tap="typeTitle='user'"
                   ng-attr-d="M{{(rightSide*.31)+(num2show*2)}},{{yOff+15}} s-160,25 20,100 z">
             </path>
             <path id="myGardenTxt"
@@ -196,6 +198,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             <path id="otherGardens"
                   fill="#A4AF3A" stroke="#2a2927"
                   stroke-width="1"
+                  hm-tap="typeTitle='rating'"
                   ng-attr-d="M{{(rightSide*.69)-(num2show*2)}},{{yOff+15}} s160,25 -20,100 z">
             </path>
             <path id="otherGardensTxt"
@@ -215,20 +218,21 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
         </g>
         <g id="logoButton">
             <path  
-                  hm-tap="alert('this will also submit')"
+                  hm-tap="typeTitle='search'"
                   fill="#A4AF3A" stroke="#2a2927" 
                   stroke-width="1"
                   ng-attr-d="M{{(rightSide*.3)+(num2show*2)}},{{yOff+5}} S{{rightSide/2}},{{yOff-55}} {{(rightSide*.7)-(num2show*2)}},{{yOff+5}} 
                             l{{-((num2show*2)+12)}},120 s-90,15 {{(num2show*4)-(rightSide*.32)}},0 z">
             </path>
             <image xlink:href="img/ll_search.svg"  
-                   hm-tap="alert('this will submit')"
+                   hm-tap="typeTitle='search'"
                 height="100" width="100"
                    ng-attr-x="{{(rightSide*.38)+(num2show*2)}}"
                    ng-attr-y="{{yOff}}"
                    />
         </g>
         
+<!--
         <g id="Rlogos">
             <image xlink:href="img/DASHlogo.png"  
                 height="80" ng-attr-width="{{140-(num2show*4)}}"
@@ -241,6 +245,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                    ng-attr-y="{{65+yOff}}"
                    />
         </g>
+-->
         <path id="rightMask" fill="#68811e"
               ng-attr-d="M{{rightSide}},0 l1500,0 l0,1500 l-1500,0 z">
         </path>
@@ -270,7 +275,8 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
 ng-repeat="categType in plantObjectModel.dataIcons | 
                            filter:q | limitTo:num2show"
 -->
-	<input id="categSearch" ng-show="showSrch" type="search" size="12" ng-model="q" placeholder="filter searches..." />
+	<input id="categSearch" ng-show="showSrch" type="search" size="12" ng-model="typeTitle" placeholder="filter searches..." />
+
 <!--
 <img id="honorsLogo" src="img/honors.png" />
 <img id="DASHLogo" src="img/DASHlogo.png" />
