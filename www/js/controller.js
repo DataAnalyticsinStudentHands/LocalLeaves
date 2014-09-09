@@ -32,16 +32,28 @@
 ////            console.log('change');
 ////            location.reload();
 //        };
-            $scope.matchCat = function(category){
-                //var category = this;
-                var included = false;
-                for (var i=0;i<plantObjectModel.dataIcons[category].search_use.length;i++){
-                    if (typeTitle==plantObjectModel.dataIcons[category].search_use[i]){
-                        included=true;
+            $scope.list2show = function(typeTitle){
+                var rtnList = [];
+                for (var k=0; k< plantObjectModel.dataIcons.length;k++){
+                    var categ = plantObjectModel.dataIcons[k];
+                    for (var i=0;i<plantObjectModel.dataIcons[categ].search_use.length;i++){
+                        if (typeTitle==plantObjectModel.dataIcons[categ].search_use[i]){
+                            rtnList.push(categ);
+                        };
                     };
-                };
-                return included;
-            };
+                };   
+                return rtnList; 
+            }
+//            $scope.matchCat = function(category){
+//                //var category = this;
+//                var included = false;
+//                for (var i=0;i<plantObjectModel.dataIcons[category].search_use.length;i++){
+//                    if (typeTitle==plantObjectModel.dataIcons[category].search_use[i]){
+//                        included=true;
+//                    };
+//                };
+//                return included;
+//            };
 //            $scope.categPositionContrl = function(categType){
 //                var categs = [];
 //                //create a file with the right index, and then search against it!!
@@ -66,8 +78,11 @@
             //call this "leftSd" and use throughout Main.html divided in half, etc.
 //            console.log($window.onresize);
             $scope.$watch('typeTitle',function(newValue,oldValue){
-                $scope.num2show = num2show;
-                $scope.matchCat = matchCat;
+                if(newValue != oldValue){
+                    var wholeSVG = document.getElementById('rowContainer');
+//                    $scope.$digest(wholeSVG);
+                };
+//                
             });
             var windowSize = function(){
                 windowHt = $scope.windowHt = document.documentElement.clientHeight; //$window.outerHeight;

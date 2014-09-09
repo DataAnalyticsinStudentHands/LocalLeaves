@@ -151,7 +151,7 @@ var loaded = {};
             return rtn;
         };
         scope.rot8 = function($event,windowWd,categType){
-            if((windowWd/2)>$event.gesture.center.pageX){
+            if((rightSide/2)>$event.gesture.center.pageX){
                 scope.swipeRow(categType,'left')
             }else{
                 scope.swipeRow(categType,'right')

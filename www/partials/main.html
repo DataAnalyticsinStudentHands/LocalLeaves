@@ -69,14 +69,13 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                           startOffset="50%" 
                 >
             {{typeTitle}}</text>
-        <g class="rows" row-controls
+<!--            ng-repeat="categType in plantObjectModel.dataIcons | filter:matchCat  |-->
+        <g id="rowContainer" class="rows" row-controls
                 hm-swipe-left="swipeRow(categType,'left')"
                 hm-swipe-right="swipeRow(categType,'right')"
                 hm-drag="moveRow(categType,$event)"
                 ng-model="typeTitle"
-                ng-repeat="categType in plantObjectModel.dataIcons | 
-                           filter:matchCat |
-                           limitTo:num2show" >
+                ng-repeat="categType in list2show(typeTitle) | limitTo:num2show" >
             <path class="rowUnderScores" fill="none" stroke="#BD9E73" stroke-width="2" 
                   ng-show="!$first"
                   shape-rendering="optimizeQuality" 
