@@ -44,8 +44,12 @@
                 };   
                 return rtnList; 
             }
-            $scope.images2show = function(typeTitle){ //need to think through!!
+            
+            var showResults = $scope.showResults = true;
+            $scope.images2show = function(typeTitle,showResults){ //need to think through!!
+                
                 var rtnList = [];
+                console.log(plantObjectModel);
                 for (var k=0; k< plantObjectModel.srchResults.length;k++){
                     var categ = plantObjectModel.srchResults[k];
                     for (var i=0;i<plantObjectModel.srchResults[categ].search_use.length;i++){
@@ -54,6 +58,9 @@
                         };
                     };
                 };   
+                if (!showResults){
+                    rtnList = [];
+                }
                 return rtnList; 
             }
 //            $scope.matchCat = function(category){

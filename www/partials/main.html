@@ -14,7 +14,6 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
         </path>
 
         <path id="topBar" fill="{{topFill}}" 
-              hm-tap="showResults=!showResults"
               ng-attr-d="M0,0 l{{rightSide}},0 l0,65 s{{-rightSide/2}},-50 {{-rightSide}},0 z">
         </path>
         <path id="bottomBar" fill="{{topFill}}" 
@@ -220,7 +219,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             </text>
         </g>
         <g id="logoButton">
-            <path  
+            <path 
                   hm-tap="typeTitle='Match'"
                   fill="#A4AF3A" stroke="#2a2927" 
                   stroke-width="1"
@@ -273,11 +272,14 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             </g>
         </g>
     </svg>
-
+        <ui-view style="position:absolute;float;right">
+        <i ui-sref="main.results">Some content will load here!</i>
+    </ui-view>
 <!--
-ng-repeat="categType in plantObjectModel.dataIcons | 
-                           filter:q | limitTo:num2show"
+        <div ui-view>
+        </div>
 -->
+        
 	<input id="categSearch" ng-show="showSrch" type="search" size="12" ng-model="typeTitle" placeholder="filter searches..." />
 
 <!--

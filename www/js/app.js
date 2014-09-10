@@ -14,57 +14,28 @@ var localLeaves = angular.module('localLeaves', [
         $urlRouterProvider.otherwise("");
         
         $stateProvider.
-            state("Main", {
+            state("main", {
+//                abstract:true,
                 url: "",
                 views: {
-                    "main": {templateUrl: "partials/main.html", controller: "mainCtrl"},
-                    "images": {templateUrl: "partials/images.html", controller: "mainCtrl"}
-                }
+                    "main": {templateUrl: "partials/main.html", controller: "mainCtrl"}
+                },
+            onEnter: function(){
+              console.log("enter main");
+            }
             }).
-                   //need to do images as state in order to handle promises better
-        
-        
-        
-                             
-//            state('login', {
-//                url: "",
-//                views: {
-//                    "login": { templateUrl: "partials/login.html"}
-//                }
-//            }).
-//            state('Home', {
-//                url: "/Home",
-//                views: {
-//                    "home": {templateUrl: "partials/home.html", controller: 'mainCtrl'}   
-//                }
-//
-//            }).
-//            state('Search', {
-//                url: "/Search",
-//                views: {
-//                    "search": {templateUrl: "partials/search.html", controller: 'mainCtrl'}
-//                }
-//            }).
-//            state('SearchTraditional', {
-//                url: "/SearchTraditional",
-//                views: {
-//					"topBar": {templateUrl: "partials/topBar.html", controller: 'menuCtrl'},
-//                    "app": {templateUrl: "partials/traditionalSearch.html", controller: 'mainCtrl'},
-//					"menuBar": {templateUrl: "partials/menuBar.html", controller: 'mainCtrl'}
-//                }
-//            }).
-        //add a nested view for traditional search, with template pointing to traditionalSearch.html and main.Ctrl
-            state('SearchResults', {
-                url: "/SearchResults",
-                views: {
-                    "results": {templateUrl: "partials/searchResults.html", controller: 'SearchResultsCtrl'}
-                }
+            state('main.results', {
+                url: "/match",
+                templateUrl: "partials/images.html", 
+                controller: "mainCtrl",
+            onEnter: function(){
+              console.log("enter results");
+            }
             }).
-            state('PlantInfo', {
-                url: "/PlantInfo",
-                views: {
-                    "info": {templateUrl: "partials/plantInfo.html", controller: 'PlantInfoCtrl'}
-                }
+            state('main.PlantInfo', {
+                url: "/plantInfo",
+                templateUrl: "partials/plantInfo.html", 
+                controller: 'PlantInfoCtrl'
             }).
 		 state('More', {
 			url: "/More",

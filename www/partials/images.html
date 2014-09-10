@@ -1,7 +1,7 @@
 <!--<div id="main-wrapper"  do not put ng-attr on viewBox>
 hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
 -->
-    
+    <div>WTEESDFFDSG</div>
     <svg id="resultsWindow" preserveAspectRatio="xMinYMin meet" viewBox="0 0 {{rightSide+40}} {{yOff+170}}"
          xmlns="http://www.w3.org/2000/svg">
 <!--
@@ -37,19 +37,21 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
         </defs>
 -->
         
+<!--
         <g id="verticals">
             <path  
                   fill="none" stroke="#BD9E73" 
-                  stroke-width="16"
-                  ng-attr-d="M{{rightSide*.3}},8 L{{(rightSide*.31)+(num2show*3)}},{{yOff+20}}">
+                  stroke-width="11"
+                  ng-attr-d="M{{rightSide*.3}},8 L{{(rightSide*.31)+(num2show*3)}},{{rowHt+20}}">
             </path>
             <path 
                   fill="none" stroke="#BD9E73" 
-                  stroke-width="16"
-                  ng-attr-d="M{{rightSide*.7}},8 L{{(rightSide*.69)-(num2show*4)}},{{yOff+20}}">
+                  stroke-width="11"
+                  ng-attr-d="M{{rightSide*.7}},8 L{{(rightSide*.69)-(num2show*4)}},{{rowHt+20}}">
             </path>
             
         </g>
+-->
 
 <!--
         <path id="titleBar" fill="none" stroke="#BD9E73" 
@@ -73,27 +75,27 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                 >
             {{typeTitle}}</text>
 -->
-<!--            ng-repeat="categType in plantObjectModel.dataIcons | filter:matchCat  |-->
+<!--            ng-repeat="imageType in plantObjectModel.srchResults | filter:matchCat  |-->
         <g id="rowContainer" class="rows" row-controls
-                hm-swipe-left="swipeRow(categType,'left')"
-                hm-swipe-right="swipeRow(categType,'right')"
-                hm-drag="moveRow(categType,$event)"
+                hm-swipe-left="swipeRow(imageType,'left')"
+                hm-swipe-right="swipeRow(imageType,'right')"
+                hm-drag="moveRow(imageType,$event)"
                 ng-model="typeTitle"
-                ng-repeat="image in images2show(typeTitle) | limitTo:num2show" >
+                ng-repeat="imageType in images2show(typeTitle,showResults) | limitTo:num2show" >
             <path class="rowUnderScores" fill="none" stroke="#BD9E73" stroke-width="2" 
                   ng-show="!$first"
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.05)+($index*6)}},{{(rowHt*$index)+86}} 
                      s{{rightSide*.45}},-90 {{(rightSide*.90)-($index*12)}},0" /> 
             <path class="rowTitles" 
-                  hm-tap="alert(plantObjectModel.dataIcons[categType].search_use)"
+                  hm-tap=""
                   fill="none" stroke="#BD9E73" 
                   stroke-width="36"  
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.3)+($index*4)}},{{(rowHt*$index)+70}} 
                      s{{rightSide*.2}},-15 {{(rightSide*.4)-($index*8)}},0" />
             <path class="rowTitleTxtPaths" fill="none" stroke="none" 
-                  id="{{categType+'txtPth'}}"
+                  id="{{imageType+'txtPth'}}"
                   stroke-width="4"  
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.3)+($index*4)}},{{(rowHt*$index)+80}} 
@@ -103,27 +105,27 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                   font-size="30" fill="{{topFill}}" 
                   ng-attr-alignment-baseline="central"
                   text-anchor="middle" >
-                <textPath xlink:href="{{'#'+categType+'txtPth'}}"
+                <textPath xlink:href="{{'#'+imageType+'txtPth'}}"
                           startOffset="50%">
-                    {{plantObjectModel.dataIcons[categType].pretty_title}}
+                    {{plantObjectModel.srchResults[imageType].pretty_title}}
                 </textPath>
             </text>
             
-            <g id="selectionImages" ng-repeat="icon in plantObjectModel.dataIcons[categType].icons"
+            <g id="selectionImages" ng-repeat="icon in plantObjectModel.srchResults[imageType].icons"
                >
                 <image img-controls
                        
-                        class="rowImage"
+                        class="rowImage {{$index}} {{imgTransform2}}"
                         
                         ng-attr-x="{{rightSide*.4}}" 
                         ng-attr-y="{{100+($parent.$index*rowHt)}}" 
-                        ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"  
-                        ng-attr-transform="{{iconTransform(categType,$parent.$index,$index)}}"
-                        xlink:href="{{'img/'+icon+'.svg'}}"
+                        ng-attr-height="{{300}}" ng-attr-width="{{300}}"  
+                        ng-attr-transform="{{imgTransform(imageType,$parent.$index,$index)}}"
+                        xlink:href="{{'img/'+icon}}"
                 />
                 <path id="{{icon+'txtPth'}}" 
                       fill="none" stroke="none"
-                      ng-attr-transform="{{iconTransform(categType,$parent.$index,$index)}}"
+                      ng-attr-transform="{{imgTransform(imageType,$parent.$index,$index)}}"
                       ng-attr-d="M{{rightSide*.4}},{{170+($parent.$index*rowHt)}} s{{rightSide*.1}},-15 {{rightSide*.2}},0" />
                 <text class="iconTitle" font-family="Verdana" 
                       ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"
@@ -142,7 +144,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.075)+($index*6)}},{{(rowHt*$index)+105}} 
                      l-20,20 l20,20"
-                  hm-tap="swipeRow(categType,'left')"
+                  hm-tap="swipeRow(imageType,'left')"
                   >
             </path>
             <path class="arrowsRight" fill="white" fill-opacity=".001"
@@ -150,14 +152,14 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.925)-($index*6)}},{{(rowHt*$index)+105}} 
                      l20,20 l-20,20"
-                  hm-tap="swipeRow(categType,'right')"
+                  hm-tap="swipeRow(imageType,'right')"
                   
                   >
             </path>
 <!--
             <path 
-                    class="{{showNotchedLine(categType)}}"
-                    hm-tap="alert(showNotchedLine(categType))"
+                    class="{{showNotchedLine(imageType)}}"
+                    hm-tap="alert(showNotchedLine(imageType))"
                     fill="none" stroke="#7387bd" stroke-width="6" 
                     shape-rendering="optimizeQuality" 
                     ng-attr-d="M{{25+($index*6)}},{{(190*$index)+165}} 
@@ -169,7 +171,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             <!--below is not on top of vertical bars??-->
 <!--
             <path class="centerGlass"
-                  hm-tap="rot8($event,{{windowWd}},categType)"
+                  hm-tap="rot8($event,{{windowWd}},imageType)"
                   
                   ng-attr-d="M{{(rightSide*.31)+($index*4)}},{{(rowHt*$index)+87}} 
                      s{{(rightSide*.22)-($index*4)}},-15 {{(rightSide*.37)-($index*8)}},0 L{{(rightSide*.68)-($index*4)}},{{(rowHt*($index+1))+70}} s{{($index*4)-rightSide*.18}},-10 {{($index*8)-(rightSide*.36)}},0 z"
@@ -283,7 +285,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
     </svg>
 
 <!--
-ng-repeat="categType in plantObjectModel.dataIcons | 
+ng-repeat="imageType in plantObjectModel.srchResults | 
                            filter:q | limitTo:num2show"
 -->
 	<input id="categSearch" ng-show="showSrch" type="search" size="12" ng-model="typeTitle" placeholder="filter searches..." />

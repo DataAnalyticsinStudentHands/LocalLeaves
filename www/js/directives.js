@@ -101,6 +101,27 @@ var loaded = {};
                 return categs.indexOf(categType);
         };
         scope.imgHt = 10;
+        scope.imgTransform = function(imageType,parent,ind){
+            var selectDeg = plantObjectModel.srchResults[imageType].selectDeg;
+            var refDeg = plantObjectModel.srchResults[imageType].refDeg;
+            var icons = plantObjectModel.srchResults[imageType].icons;
+            if (selectDeg<0){
+                selectDeg = 0;
+            };
+            var select = selectDeg/12; 
+            var centerLngth = Math.floor(icons.length/2); 
+            if (select>icons.length-1){
+                select = icons.length-1;
+            };
+            var indIcon = parseInt(ind-select); //icons.indexOf(icon)-select;
+            if (isNaN(indIcon)){indIcon = 0};
+            var firstDeg = indIcon*refDeg;
+            var rotateHt = 1100+(parent*140);
+            if (isNaN(rotateHt)){rotateHt=1100};
+            var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
+//            console.log('indirect: '+rtn)
+            return rtn;
+        };
         var iconTransformRow = function(categType,icon){
             var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
             var refDeg = plantObjectModel.dataIcons[categType].refDeg;

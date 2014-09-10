@@ -127,10 +127,10 @@ plantServices.service('plantObjectModel', ['$http', function($http) {
             dataIcons.push(key)
             dataIcons[key] = data[0][key]
             //console.log(data[0][key])
-            fanType.push(key);
+            //fanType.push(key);
         };
     });
-    this.fanType = fanType;
+    //this.fanType = fanType;
     this.dataIcons = dataIcons;
     $http.get('js/results.json').success(function(data) {
         //console.log(data);
@@ -142,6 +142,7 @@ plantServices.service('plantObjectModel', ['$http', function($http) {
             //console.log(data[0][key])
         };
     });
+    this.srchResults = srchResults;
     
 //    $http({method: 'get', url:'json/searchIcons.json'})
 //        .success(function(data, status, headers, config) {
