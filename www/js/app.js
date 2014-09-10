@@ -17,10 +17,14 @@ var localLeaves = angular.module('localLeaves', [
             state("Main", {
                 url: "",
                 views: {
-                    "main": {templateUrl: "partials/main.html", controller: "mainCtrl"}
+                    "main": {templateUrl: "partials/main.html", controller: "mainCtrl"},
+                    "images": {templateUrl: "partials/images.html", controller: "mainCtrl"}
                 }
             }).
-                    
+                   //need to do images as state in order to handle promises better
+        
+        
+        
                              
 //            state('login', {
 //                url: "",

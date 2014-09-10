@@ -3,7 +3,7 @@
         "Native":{
             "pretty_title":"Native",
             "details":"Region in which this plant is native",
-            "search_use":["search", "user"],
+            "search_use":["Match", "My Garden"],
             "selectDeg":36,
             "refDeg":12,
             "icons":[
@@ -16,7 +16,7 @@
         "Color_Timing":{
             "pretty_title":"Bloom Season",
             "details":"Season it blooms",
-            "search_use":["search"],
+            "search_use":["Match"],
             "selectDeg":24,
             "refDeg":12,
             "icons":[
@@ -36,7 +36,7 @@
         "Soil_Conditions":{
             "pretty_title":"Water",
             "details":"Amount of water",
-            "search_use":["search", "user", "rating"],
+            "search_use":["Match", "My Garden", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -47,7 +47,7 @@
         "Sun":{
             "pretty_title":"Sunlight",
             "details":"Amount of sunglight",
-            "search_use":["search", "user", "rating"],
+            "search_use":["Match", "My Garden", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -58,7 +58,7 @@
         "Growth_Size":{
             "pretty_title":"Growth Size",
             "details":"Speed of growth",
-            "search_use":["user", "rating"],
+            "search_use":["My Garden", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -69,7 +69,7 @@
         "Maintenance":{
             "pretty_title":"Maintenance",
             "details":"The maintenance",
-            "search_use":["search"],
+            "search_use":["Match"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -80,7 +80,7 @@
         "Wildlife":{
             "pretty_title":"Wild Life",
             "details":"Animal dangers",
-            "search_use":["search"],
+            "search_use":["Match"],
             "selectDeg":24,
             "refDeg":12,
             "icons":[
@@ -92,7 +92,7 @@
         "Class":{
             "pretty_title":"Category",
             "details":"Type of plant",
-            "search_use":["search"],
+            "search_use":["Match"],
             "selectDeg":24,
             "refDeg":12,
             "icons":[
@@ -104,7 +104,7 @@
         "Map":{
             "pretty_title":"Location",
             "details":"Where the plant is found",
-            "search_use":["search", "rating"],
+            "search_use":["Match", "rating"],
             "selectDeg":24,
             "refDeg":12,
             "icons":[
@@ -140,7 +140,7 @@
         "pH":{
             "pretty_title":"pH",
             "details":"pH the plant prefers",
-            "search_use":["search","rating"],
+            "search_use":["Match","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -173,7 +173,7 @@
         "Root_Depth":{
             "pretty_title":"Root depth",
             "details":"Length underground that roots extend ",
-            "search_use":["search", "rating"],
+            "search_use":["Match", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -184,7 +184,7 @@
         "Growth_Rate":{
             "pretty_title":"Growth rate",
             "details":"Speed of growth",
-            "search_use":["user", "rating"],
+            "search_use":["My Garden", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -206,7 +206,7 @@
         "Ease_of_Planting":{
             "pretty_title":"Planting difficulty",
             "details":"Work needed to assist a plant grow",
-            "search_use":["search", "user", "rating"],
+            "search_use":["Match", "My Garden", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -217,7 +217,7 @@
         "Purpose":{
             "pretty_title":"Planting purpose",
             "details":"Reason for planting",
-            "search_use":["search", "user"],
+            "search_use":["Match", "My Garden"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -239,7 +239,7 @@
         "Endorsed_By":{
             "pretty_title":"Supported by",
             "details":"Organizations that support certain plants",
-            "search_use":["search", "user"],
+            "search_use":["Match", "My Garden"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -250,7 +250,7 @@
         "Cultivar":{
             "pretty_title":"Cultivar",
             "details":"Human propagated subspecies",
-            "search_use":["searcg", "user", "rating"],
+            "search_use":["searcg", "My Garden", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -261,7 +261,7 @@
         "Duration":{
             "pretty_title":"Lifetime",
             "details":"Life span",
-            "search_use":["search", "rating"],
+            "search_use":["Match", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -272,7 +272,7 @@
         "Fruit_Timing":{
             "pretty_title":"Season for Fruit",
             "details":"Season fruit is produced",
-            "search_use":["search","rating"],
+            "search_use":["Match","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -295,7 +295,7 @@
         "Larval_Host ":{
             "pretty_title":"Larval Host ",
             "details":"Larvae that live and feed off of this plant",
-            "search_use":["search", "user", "rating"],
+            "search_use":["Match", "My Garden", "rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -306,7 +306,7 @@
         "Adult_Host":{
             "pretty_title":"Adult Host ",
             "details":"Animals that feed off of this plant",
-            "search_use":["serch", "user", "rating"],
+            "search_use":["serch", "My Garden", "rating"],
             "selectDeg":24,
             "refDeg":12,
             "icons":[
@@ -328,7 +328,7 @@
         "Toxic_Part":{
             "pretty_title":"Toxicity",
             "details":"Toxic parts of the plant",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -339,7 +339,7 @@
         "Edible_Part":{
             "pretty_title":"Toxicity",
             "details":"Edible parts of the plant",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -350,7 +350,7 @@
         "Allergenicity":{
             "pretty_title":"Causes Allergies",
             "details":"Can cause allergies",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -361,7 +361,7 @@
         "Air_Purifying":{
             "pretty_title":"Air purifier",
             "details":"Cleans the air",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -372,7 +372,7 @@
         "Soil_Purifying":{
             "pretty_title":"Soil Purifying",
             "details":"Add more nutrients to soil",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -383,7 +383,7 @@
         "Hardy_Scale":{
             "pretty_title":"Hardyness",
             "details":"Able to withstand weather extremes",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -394,7 +394,7 @@
         "Pest_Tolerance":{
             "pretty_title":"Pest tolerance",
             "details":"Pest resistance",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -405,7 +405,7 @@
         "Disease_Tolerance":{
             "pretty_title":"Disease tolerance",
             "details":"Susceptibility to diseases",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -416,7 +416,7 @@
         "Cold_Tolerance":{
             "pretty_title":"Cold tolerance",
             "details":"Susceptibility to cold temperatures",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -427,7 +427,7 @@
         "Drought_Tolerance":{
             "pretty_title":"Drought tolerance",
             "details":"Susceptibility to min amounts of moisture",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[
@@ -438,7 +438,7 @@
         "Moisture_Tolerance":{
             "pretty_title":"Flood tolerance",
             "details":"Susceptibility to max amounts of moisture",
-            "search_use":["search","user","rating"],
+            "search_use":["Match","My Garden","rating"],
             "selectDeg":12,
             "refDeg":12,
             "icons":[

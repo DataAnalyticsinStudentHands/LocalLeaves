@@ -25,7 +25,7 @@
             $scope.alert = function(text) {
                 alert(text);
             };
-            var typeTitle = $scope.typeTitle = 'rating';
+            var typeTitle = $scope.typeTitle = 'My Garden';
 //            var categInput = document.getElementById('logoButton');
 //        categInput.onclick = function(){
 //            $scope.$digest();
@@ -38,6 +38,18 @@
                     var categ = plantObjectModel.dataIcons[k];
                     for (var i=0;i<plantObjectModel.dataIcons[categ].search_use.length;i++){
                         if (typeTitle==plantObjectModel.dataIcons[categ].search_use[i]){
+                            rtnList.push(categ);
+                        };
+                    };
+                };   
+                return rtnList; 
+            }
+            $scope.images2show = function(typeTitle){ //need to think through!!
+                var rtnList = [];
+                for (var k=0; k< plantObjectModel.srchResults.length;k++){
+                    var categ = plantObjectModel.srchResults[k];
+                    for (var i=0;i<plantObjectModel.srchResults[categ].search_use.length;i++){
+                        if (typeTitle==plantObjectModel.srchResults[categ].search_use[i]){
                             rtnList.push(categ);
                         };
                     };
@@ -78,10 +90,19 @@
             //call this "leftSd" and use throughout Main.html divided in half, etc.
 //            console.log($window.onresize);
             $scope.$watch('typeTitle',function(newValue,oldValue){
-                if(newValue != oldValue){
-                    var wholeSVG = document.getElementById('rowContainer');
+//                if(newValue != oldValue){
+//                    alert(newValue)
+                    if (newValue == 'My Garden'){
+                        $scope.topFill = "#ecf514";
+                    } else {
+                        if (newValue == "Match"){
+                            $scope.topFill = "#363465";
+                        }else{
+                            $scope.topFill = "#1e15f2";
+                        };
+                    };  
 //                    $scope.$digest(wholeSVG);
-                };
+//                };
 //                
             });
             var windowSize = function(){

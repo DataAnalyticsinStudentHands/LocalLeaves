@@ -159,18 +159,20 @@ var loaded = {};
         };
         var tempDeg = .01;
         scope.moveRow = function(categType,$event){
+            var refDeg = plantObjectModel.dataIcons[categType].refDeg
             if ($event.gesture.direction == 'left' || $event.gesture.direction == 'right' ){
                 var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
                 var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
 //                var tempDeg = .01;
                 var icons = plantObjectModel.dataIcons[categType].icons;
+                var deltaOff = refDeg*4;
                 if (tempDeg < maxDegrees){
-                    tempDeg -= $event.gesture.deltaX/42;
+                    tempDeg -= $event.gesture.deltaX/deltaOff;
                     plantObjectModel.dataIcons[categType].selectDeg = tempDeg;
                 }
             }else{
-                var refDeg = plantObjectModel.dataIcons[categType].refDeg
-                var newRef = $event.gesture.deltaY/300;
+                
+                var newRef = $event.gesture.deltaY/250;
                 if ($event.gesture.direction == 'up'){
                     if ((refDeg + newRef) > 1){
                         plantObjectModel.dataIcons[categType].refDeg = (refDeg + newRef);

@@ -1,0 +1,37 @@
+[
+    {
+        "FirstPCA":{
+            "pretty_title":"Best Fits",
+            "details":"The closest matches within our database",
+            "search_use":["Match", "My Garden"],
+            "selectDeg":36,
+            "refDeg":12,
+            "icons":[
+                "Iris virginica.jpg",
+                "Obedient Plant 1.jpg",
+                "Montbretia outside.jpg",
+                "Lycoris radiata.jpg",
+                "Salvia red common with bee.jpg"]
+        },
+        "SecondPCA":{
+            "pretty_title":"Bloom Season",
+            "details":"Season it blooms",
+            "search_use":["Match"],
+            "selectDeg":24,
+            "refDeg":12,
+            "icons":[
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "may",
+                "jun",
+                "jul",
+                "aug",
+                "sep",
+                "oct",
+                "nov",
+                "dec"]
+        }
+    }
+]

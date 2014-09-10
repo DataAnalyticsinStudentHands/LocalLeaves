@@ -2,8 +2,9 @@
 hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
 -->
     
-    <svg id="fanWindow" preserveAspectRatio="xMinYMin meet" viewBox="0 0 {{rightSide+40}} {{yOff+170}}"
+    <svg id="resultsWindow" preserveAspectRatio="xMinYMin meet" viewBox="0 0 {{rightSide+40}} {{yOff+170}}"
          xmlns="http://www.w3.org/2000/svg">
+<!--
         <path id="rightSideMask" ng-if="notMobile"
               fill="{{topFill}}"
               ng-attr-d="M{{rightSide-10}},0 l150,0 l0,{{yOff+135}} l-150,0 z">
@@ -34,6 +35,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                 <stop offset="20%" style="stop-color:#68811e;stop-opacity:1" />
             </linearGradient>
         </defs>
+-->
         
         <g id="verticals">
             <path  
@@ -49,6 +51,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             
         </g>
 
+<!--
         <path id="titleBar" fill="none" stroke="#BD9E73" 
                   shape-rendering="optimizeQuality" 
                   stroke-width="34" 
@@ -69,13 +72,14 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                           startOffset="50%" 
                 >
             {{typeTitle}}</text>
+-->
 <!--            ng-repeat="categType in plantObjectModel.dataIcons | filter:matchCat  |-->
         <g id="rowContainer" class="rows" row-controls
                 hm-swipe-left="swipeRow(categType,'left')"
                 hm-swipe-right="swipeRow(categType,'right')"
                 hm-drag="moveRow(categType,$event)"
                 ng-model="typeTitle"
-                ng-repeat="categType in list2show(typeTitle) | limitTo:num2show" >
+                ng-repeat="image in images2show(typeTitle) | limitTo:num2show" >
             <path class="rowUnderScores" fill="none" stroke="#BD9E73" stroke-width="2" 
                   ng-show="!$first"
                   shape-rendering="optimizeQuality" 
@@ -163,6 +167,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
 -->
 
             <!--below is not on top of vertical bars??-->
+<!--
             <path class="centerGlass"
                   hm-tap="rot8($event,{{windowWd}},categType)"
                   
@@ -170,9 +175,11 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                      s{{(rightSide*.22)-($index*4)}},-15 {{(rightSide*.37)-($index*8)}},0 L{{(rightSide*.68)-($index*4)}},{{(rowHt*($index+1))+70}} s{{($index*4)-rightSide*.18}},-10 {{($index*8)-(rightSide*.36)}},0 z"
                   fill="#0d13a0" opacity=".08"
             />
+-->
             
         </g>
         
+<!--
         <g id="sideButtons">
             <path id="myGarden"
                   fill="#A4AF3A" stroke="#2a2927"
@@ -235,6 +242,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                    />
         </g>
         
+-->
 <!--
         <g id="Rlogos">
             <image xlink:href="img/DASHlogo.png"  
