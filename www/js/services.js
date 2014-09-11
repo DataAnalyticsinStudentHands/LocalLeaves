@@ -118,31 +118,28 @@ plantServices.service('plantObjectModel', ['$http', function($http) {
     var fanType = []; //???
     var dataIcons = [];
     var srchResults = [];
-    //breaking up file this way so that the indexing in the html page is simplified
-    $http.get('js/search.json').success(function(data) {
-        //console.log(data);
-    
-        //still not real sure what's going on -- seems to need to run through a function to actually write to the variable on plantObjectModel, although it shows up on console.log, and data outputs differently in console from the dataIcons I construct here.
+    //not sure - I'm nesting them so that the search results always go top
+/*    $http.get('js/search.json').success(function(data) {
         for (var key in data[0]) {
             dataIcons.push(key)
             dataIcons[key] = data[0][key]
-            //console.log(data[0][key])
-            //fanType.push(key);
         };
-    });
+    });*/
     //this.fanType = fanType;
     this.dataIcons = dataIcons;
     $http.get('js/results.json').success(function(data) {
-        //console.log(data);
-    
-        //still not real sure what's going on -- seems to need to run through a function to actually write to the variable on plantObjectModel, although it shows up on console.log, and data outputs differently in console from the dataIcons I construct here.
         for (var key in data[0]) {
-            srchResults.push(key)
-            srchResults[key] = data[0][key]
-            //console.log(data[0][key])
+            dataIcons.push(key)
+            dataIcons[key] = data[0][key]
         };
+        $http.get('js/search.json').success(function(data) {
+            for (var key in data[0]) {
+                dataIcons.push(key)
+                dataIcons[key] = data[0][key]
+            };
+        });
     });
-    this.srchResults = srchResults;
+    //this.srchResults = srchResults;
     
 //    $http({method: 'get', url:'json/searchIcons.json'})
 //        .success(function(data, status, headers, config) {

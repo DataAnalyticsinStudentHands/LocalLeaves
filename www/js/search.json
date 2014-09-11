@@ -7,11 +7,11 @@
             "selectDeg":36,
             "refDeg":12,
             "icons":[
-                "native1",
-                "native2",
-                "native3",
-                "native4",
-                "nativenot"]
+                "native1.svg",
+                "native2.svg",
+                "native3.svg",
+                "native4.svg",
+                "nativenot.svg"]
         },
         "Color_Timing":{
             "pretty_title":"Bloom Season",
@@ -20,18 +20,18 @@
             "selectDeg":24,
             "refDeg":12,
             "icons":[
-                "jan",
-                "feb",
-                "mar",
-                "apr",
-                "may",
-                "jun",
-                "jul",
-                "aug",
-                "sep",
-                "oct",
-                "nov",
-                "dec"]
+                "jan.svg",
+                "feb.svg",
+                "mar.svg",
+                "apr.svg",
+                "may.svg",
+                "jun.svg",
+                "jul.svg",
+                "aug.svg",
+                "sep.svg",
+                "oct.svg",
+                "nov.svg",
+                "dec.svg"]
         },
         "Soil_Conditions":{
             "pretty_title":"Water",
@@ -40,9 +40,9 @@
             "selectDeg":12,
             "refDeg":12,
             "icons":[
-                "waterdrop_empty",
-                "waterdrop_half",
-                "waterdrop_full"]
+                "waterdrop_empty.svg",
+                "waterdrop_half.svg",
+                "waterdrop_full.svg"]
         },
         "Sun":{
             "pretty_title":"Sunlight",
@@ -51,9 +51,9 @@
             "selectDeg":12,
             "refDeg":12,
             "icons":[
-                "sun_empty",
-                "sun_half",
-                "sun_full"]
+                "sun_empty.svg",
+                "sun_half.svg",
+                "sun_full.svg"]
         },
         "Growth_Size":{
             "pretty_title":"Growth Size",
@@ -62,9 +62,9 @@
             "selectDeg":12,
             "refDeg":12,
             "icons":[
-                "grow1",
-                "grow2",
-                "grow3"]
+                "grow1.svg",
+                "grow2.svg",
+                "grow3.svg"]
         },
         "Maintenance":{
             "pretty_title":"Maintenance",
@@ -73,9 +73,9 @@
             "selectDeg":12,
             "refDeg":12,
             "icons":[
-                "maint1",
-                "maint2",
-                "maint3"]
+                "maint1.svg",
+                "maint2.svg",
+                "maint3.svg"]
         },
         "Wildlife":{
             "pretty_title":"Wild Life",
@@ -84,10 +84,10 @@
             "selectDeg":24,
             "refDeg":12,
             "icons":[
-                "wildbee",
-                "wildbird",
-                "wildbutterfly",
-                "wildlife"]
+                "wildbee.svg",
+                "wildbird.svg",
+                "wildbutterfly.svg",
+                "wildlife.svg"]
         },
         "Class":{
             "pretty_title":"Category",
@@ -96,10 +96,10 @@
             "selectDeg":24,
             "refDeg":12,
             "icons":[
-                "class1",
-                "class2",
-                "class3",
-                "class4"]
+                "class1.svg",
+                "class2.svg",
+                "class3.svg",
+                "class4.svg"]
         },
         "Map":{
             "pretty_title":"Location",
@@ -108,10 +108,10 @@
             "selectDeg":24,
             "refDeg":12,
             "icons":[
-                "map1",
-                "map2",
-                "map3",
-                "map4"]
+                "map1.svg",
+                "map2.svg",
+                "map3.svg",
+                "map4.svg"]
         },
         "Height_ft":{
             "pretty_title":"Height",
@@ -120,10 +120,10 @@
             "selectDeg":24,
             "refDeg":12,
             "icons":[
-                "small",
-                "med",
-                "large",
-                "x-large"]
+                "small.svg",
+                "med.svg",
+                "large.svg",
+                "x-large.svg"]
         },
         "Width_ft":{
             "pretty_title":"Width",
@@ -132,10 +132,10 @@
             "selectDeg":24,
             "refDeg":12,
             "icons":[
-                "small",
-                "med",
-                "large",
-                "x-large"]
+                "small.svg",
+                "med.svg",
+                "large.svg",
+                "x-large.svg"]
         },
         "pH":{
             "pretty_title":"pH",
@@ -188,9 +188,9 @@
             "selectDeg":12,
             "refDeg":12,
             "icons":[
-                "slow",
-                "normal",
-                "fast"]
+                "slow.svg",
+                "normal.svg",
+                "fast.svg"]
         },
         "When_to_plant":{
             "pretty_title":"When to plant",
@@ -210,9 +210,9 @@
             "selectDeg":12,
             "refDeg":12,
             "icons":[
-                "easy",
-                "mid",
-                "hard"]
+                "easy.svg",
+                "mid.svg",
+                "hard.svg"]
         },
         "Purpose":{
             "pretty_title":"Planting purpose",

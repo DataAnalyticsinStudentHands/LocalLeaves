@@ -70,11 +70,10 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             {{typeTitle}}</text>
 <!--            ng-repeat="categType in plantObjectModel.dataIcons | filter:matchCat  |-->
         <g id="rowContainer" class="rows" row-controls
-                hm-swipe-left="swipeRow(categType,'left')"
-                hm-swipe-right="swipeRow(categType,'right')"
+                hm-swipe-left="swipeRow(categType,'left',$index)"
+                hm-swipe-right="swipeRow(categType,'right',$index)"
                 hm-drag="moveRow(categType,$event)"
-                ng-model="typeTitle"
-                ng-repeat="categType in list2show(typeTitle) | limitTo:num2show" >
+                ng-repeat="categType in list2show(typeTitle,showResults) | limitTo:num2show" >
             <path class="rowUnderScores" fill="none" stroke="#BD9E73" stroke-width="2" 
                   ng-show="!$first"
                   shape-rendering="optimizeQuality" 
@@ -114,7 +113,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                         ng-attr-y="{{100+($parent.$index*rowHt)}}" 
                         ng-attr-height="{{imgHt}}" ng-attr-width="{{imgHt}}"  
                         ng-attr-transform="{{iconTransform(categType,$parent.$index,$index)}}"
-                        xlink:href="{{'img/'+icon+'.svg'}}"
+                        xlink:href="{{'img/'+icon}}"
                 />
                 <path id="{{icon+'txtPth'}}" 
                       fill="none" stroke="none"
@@ -137,7 +136,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.075)+($index*6)}},{{(rowHt*$index)+105}} 
                      l-20,20 l20,20"
-                  hm-tap="swipeRow(categType,'left')"
+                  hm-tap="swipeRow(categType,'left',$index)"
                   >
             </path>
             <path class="arrowsRight" fill="white" fill-opacity=".001"
@@ -145,7 +144,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.925)-($index*6)}},{{(rowHt*$index)+105}} 
                      l20,20 l-20,20"
-                  hm-tap="swipeRow(categType,'right')"
+                  hm-tap="swipeRow(categType,'right',$index)"
                   
                   >
             </path>
@@ -164,7 +163,8 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             <!--below is not on top of vertical bars??-->
             <path class="centerGlass"
                   hm-tap="rot8($event,{{windowWd}},categType)"
-                  
+                  hm-swipe-left="swipeRow(categType,'left',$index)"
+                  hm-swipe-right="swipeRow(categType,'right',$index)"
                   ng-attr-d="M{{(rightSide*.31)+($index*4)}},{{(rowHt*$index)+87}} 
                      s{{(rightSide*.22)-($index*4)}},-15 {{(rightSide*.37)-($index*8)}},0 L{{(rightSide*.68)-($index*4)}},{{(rowHt*($index+1))+70}} s{{($index*4)-rightSide*.18}},-10 {{($index*8)-(rightSide*.36)}},0 z"
                   fill="#0d13a0" opacity=".08"
@@ -219,7 +219,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             </text>
         </g>
         <g id="logoButton">
-            <path 
+            <path hm-hold="showResults =! showResults"
                   hm-tap="typeTitle='Match'"
                   fill="#A4AF3A" stroke="#2a2927" 
                   stroke-width="1"
@@ -248,11 +248,12 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                    />
         </g>
 -->
-        <path id="rightMask" fill="#68811e"
-              ng-attr-d="M{{rightSide}},0 l1500,0 l0,1500 l-1500,0 z">
-        </path>
+        
               
         <g id="rightSide">
+            <path id="rightMask" fill="#68811e"
+              ng-attr-d="M{{rightSide}},0 l1500,0 l0,1500 l-1500,0 z">
+            </path>
             <path id="rightSideBack" 
                   ng-if="rightSideShow"
                   stroke="{{topFill}}"
@@ -272,9 +273,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             </g>
         </g>
     </svg>
-        <ui-view style="position:absolute;float;right">
-        <i ui-sref="main.results">Some content will load here!</i>
-    </ui-view>
+
 <!--
         <div ui-view>
         </div>

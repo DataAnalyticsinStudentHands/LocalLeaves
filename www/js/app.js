@@ -23,7 +23,7 @@ var localLeaves = angular.module('localLeaves', [
             onEnter: function(){
               console.log("enter main");
             }
-            }).
+            }); /*.
             state('main.results', {
                 url: "/match",
                 templateUrl: "partials/images.html", 
@@ -42,7 +42,7 @@ var localLeaves = angular.module('localLeaves', [
 			views: {
 				"more": {templateUrl: "partials/more.html"}
 			  }
-		  });
+		  });*/
 });
 /**
 		state('PlantSuccess', {

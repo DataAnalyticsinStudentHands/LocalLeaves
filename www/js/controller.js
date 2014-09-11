@@ -9,10 +9,10 @@
             var windowWd = $scope.windowWd = $window.outerWidth;
             
             var num2show = $scope.num2show = Math.floor(windowHt/185);
-            var rowHt = $scope.rowHt = windowHt/num2show;
+            var origRowHt = windowHt/num2show;
             //console.log(rowHt)
             
-            $scope.yOff = num2show*rowHt; //needs to match for $index on images
+            $scope.yOff = num2show*origRowHt; //needs to match for $index on images
 //            alert(windowWd)
 //            function touchHandlerDummy($event){  //seems to kill other stuff on page
 ////                        $event.preventDefault();
@@ -32,21 +32,31 @@
 ////            console.log('change');
 ////            location.reload();
 //        };
-            $scope.list2show = function(typeTitle){
+            var showResults = $scope.showResults = false;
+            $scope.list2show = function(typeTitle,showResults){
                 var rtnList = [];
+//                if (showResults==true){
+//                    console.log('true is SR')
+//                };
                 for (var k=0; k< plantObjectModel.dataIcons.length;k++){
                     var categ = plantObjectModel.dataIcons[k];
                     for (var i=0;i<plantObjectModel.dataIcons[categ].search_use.length;i++){
                         if (typeTitle==plantObjectModel.dataIcons[categ].search_use[i]){
-                            rtnList.push(categ);
+//                            if (!showResults && typeTitle == 'FirstPCA'){
+//                                console.log(showResults+"should be true")
+//                                pass;
+//                            }else{
+                                rtnList.push(categ);
+                            //};
                         };
                     };
-                };   
+                }; 
+//                console.log(rtnList)
                 return rtnList; 
             }
             
-            var showResults = $scope.showResults = true;
-            $scope.images2show = function(typeTitle,showResults){ //need to think through!!
+            
+        /*    $scope.images2show = function(typeTitle,showResults){ //need to think through!!
                 
                 var rtnList = [];
                 console.log(plantObjectModel);
@@ -62,7 +72,7 @@
                     rtnList = [];
                 }
                 return rtnList; 
-            }
+            } */
 //            $scope.matchCat = function(category){
 //                //var category = this;
 //                var included = false;
@@ -96,7 +106,7 @@
             var rightSide = $scope.rightSide = 540;
             //call this "leftSd" and use throughout Main.html divided in half, etc.
 //            console.log($window.onresize);
-            $scope.$watch('typeTitle',function(newValue,oldValue){
+            $scope.$watch('typeTitle',function(newValue,oldValue){ //only used for colors now
 //                if(newValue != oldValue){
 //                    alert(newValue)
                     if (newValue == 'My Garden'){
@@ -111,27 +121,35 @@
 //                    $scope.$digest(wholeSVG);
 //                };
 //                
-            });
+            }); 
             var windowSize = function(){
                 windowHt = $scope.windowHt = document.documentElement.clientHeight; //$window.outerHeight;
 //                console.log(document.documentElement.clientWidth);
                 windowWd = $scope.windowWd = document.documentElement.clientWidth; //$window.outerWidth;
 //                console.log(windowWd+ "ww")
                 num2show = $scope.num2show = Math.floor(windowHt/185)+1;
-                rowHt = $scope.rowHt = windowHt/num2show;
+                origRowHt = $scope.origRowHt = windowHt/num2show;
+                
                 $scope.yOff = num2show*200; 
                 if(windowHt/windowWd < 1.7){
                     rightSideShow = true;
                 }else{
                     rightSideShow = false;
                 };
-                    $scope.rightSideShow = rightSideShow;
+                $scope.rightSideShow = rightSideShow;
             };
             windowSize();
             angular.element($window).bind("resize", function() {
                 windowSize();
                 $scope.$apply();
             });
+//            var countRow = num2show;
+//            $scope.rowCount = function(categ,ind){
+//                if (categ == 'FirstPCA'){
+//                    countRow -= 1;
+//                }
+//                return countRow;
+//            }
             //pseudo-code:
             //numRows is determined from availHeight then assigned as an even number height and set at 100%;
 //            var num2show = $scope.num2show = (windowHt+180)/180;

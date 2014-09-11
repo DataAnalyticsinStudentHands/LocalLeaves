@@ -66,7 +66,7 @@ var loaded = {};
 var loaded = {};
   return {
     link: function(scope, element, attrs) {
-        
+        //scope.rowHt = 100;
 //        var categInput = document.getElementById('logoButton');
 //        categInput.onclick = function(){
 //            console.log('change');
@@ -81,6 +81,25 @@ var loaded = {};
         document.addEventListener("touchend", touchHandlerDummy, false);
         document.addEventListener("mousedown", touchHandlerDummy, false);
         var rowHt = scope.rowHt = 185;
+        scope.resltIndex = scope.$index;
+//        if (scope.categType == 'FirstPCA'){
+//            scope.rowHt = 2*rowHt;
+//            scope.resltIndex = 0;
+//        };
+//        console.log(scope.showResults + 'showRes')
+//        if (scope.showResults){
+//                scope.resltIndex = scope.$index+1;
+//            }else{
+//                scope.resltIndex = scope.$index;
+//        };
+
+//        if (attrs.categCnt == 'FirstPCA'){
+//            console.log('fPCA')
+//            rowHt = 2*rowHt;
+//        }else{
+//            rowHt = 185
+//        };
+
         scope.showNotchedLine = function(categType){
             var iconsLngth = plantObjectModel.dataIcons[categType].icons.length
 //            console.log('direct'+plantObjectModel.dataIcons[categType].icons.length)
@@ -91,37 +110,37 @@ var loaded = {};
                     return 'notched-hide'
                 };
         };
-        scope.categPosition = function(categType,typeTitle){
-                var categs = [];
-                for (var i=0;i<plantObjectModel.dataIcons[categType].search_use.length;i++){
-                    if (typeTitle==plantObjectModel.dataIcons[categType].search_use[i]){
-                        categs.push(categType)
-                    };
-                }; 
-                return categs.indexOf(categType);
-        };
+//        scope.categPosition = function(categType,typeTitle){
+//                var categs = [];
+//                for (var i=0;i<plantObjectModel.dataIcons[categType].search_use.length;i++){
+//                    if (typeTitle==plantObjectModel.dataIcons[categType].search_use[i]){
+//                        categs.push(categType)
+//                    };
+//                }; 
+//                return categs.indexOf(categType);
+//        };
         scope.imgHt = 10;
-        scope.imgTransform = function(imageType,parent,ind){
-            var selectDeg = plantObjectModel.srchResults[imageType].selectDeg;
-            var refDeg = plantObjectModel.srchResults[imageType].refDeg;
-            var icons = plantObjectModel.srchResults[imageType].icons;
-            if (selectDeg<0){
-                selectDeg = 0;
-            };
-            var select = selectDeg/12; 
-            var centerLngth = Math.floor(icons.length/2); 
-            if (select>icons.length-1){
-                select = icons.length-1;
-            };
-            var indIcon = parseInt(ind-select); //icons.indexOf(icon)-select;
-            if (isNaN(indIcon)){indIcon = 0};
-            var firstDeg = indIcon*refDeg;
-            var rotateHt = 1100+(parent*140);
-            if (isNaN(rotateHt)){rotateHt=1100};
-            var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
-//            console.log('indirect: '+rtn)
-            return rtn;
-        };
+//        scope.imgTransform = function(imageType,parent,ind){
+//            var selectDeg = plantObjectModel.srchResults[imageType].selectDeg;
+//            var refDeg = plantObjectModel.srchResults[imageType].refDeg;
+//            var icons = plantObjectModel.srchResults[imageType].icons;
+//            if (selectDeg<0){
+//                selectDeg = 0;
+//            };
+//            var select = selectDeg/12; 
+//            var centerLngth = Math.floor(icons.length/2); 
+//            if (select>icons.length-1){
+//                select = icons.length-1;
+//            };
+//            var indIcon = parseInt(ind-select); //icons.indexOf(icon)-select;
+//            if (isNaN(indIcon)){indIcon = 0};
+//            var firstDeg = indIcon*refDeg;
+//            var rotateHt = 1100+(parent*140);
+//            if (isNaN(rotateHt)){rotateHt=1100};
+//            var rtn = ('rotate('+firstDeg+',250,'+rotateHt+')');
+////            console.log('indirect: '+rtn)
+//            return rtn;
+//        };
         var iconTransformRow = function(categType,icon){
             var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
             var refDeg = plantObjectModel.dataIcons[categType].refDeg;
@@ -147,7 +166,7 @@ var loaded = {};
             //console.log(this)
 //            console.log('parent'+parent)
 //            console.log('ind'+ind)
-            scope.imgHt = plantObjectModel.dataIcons[categType].refDeg * 8;
+            scope.imgHt = plantObjectModel.dataIcons[categType].refDeg * 9;
             //element.attr('height',imgHt);
             var selectDeg = plantObjectModel.dataIcons[categType].selectDeg;
             var refDeg = plantObjectModel.dataIcons[categType].refDeg;
@@ -209,7 +228,7 @@ var loaded = {};
                 };
             };
         };
-        scope.swipeRow = function(categType,direction){
+        scope.swipeRow = function(categType,direction,parent){
 //            console.log('heard')
             var maxDegrees = (plantObjectModel.dataIcons[categType].icons.length - 1) * 12;
             var selectionDeg = plantObjectModel.dataIcons[categType].selectDeg;
@@ -224,7 +243,7 @@ var loaded = {};
             plantObjectModel.dataIcons[categType].selectDeg = selectionDeg;
             var icons = plantObjectModel.dataIcons[categType].icons;
             for (var i = 0;i<icons.length;i++){
-                iconTransformRow(categType,icons[i]);
+                iconTransformRow(categType,icons[i],parent);
             }
 //            console.log('did')
         }
