@@ -190,13 +190,13 @@ var loaded = {};
 //            console.log('indirect: '+rtn)
             return rtn;
         };
-        scope.rot8 = function($event,windowWd,categType){
-            if((rightSide/2)>$event.gesture.center.pageX){
-                scope.swipeRow(categType,'left')
-            }else{
-                scope.swipeRow(categType,'right')
-            };
-        };
+//        scope.rot8 = function($event,windowWd,categType){
+//            if((rightSide/2)>$event.gesture.center.pageX){
+//                scope.swipeRow(categType,'left')
+//            }else{
+//                scope.swipeRow(categType,'right')
+//            };
+//        };
         var tempDeg = .01;
         scope.moveRow = function(categType,$event){
             var refDeg = plantObjectModel.dataIcons[categType].refDeg

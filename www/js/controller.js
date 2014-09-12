@@ -110,12 +110,12 @@
 //                if(newValue != oldValue){
 //                    alert(newValue)
                     if (newValue == 'My Garden'){
-                        $scope.topFill = "#ecf514";
+                        $scope.topFill = "#960C22";
                     } else {
                         if (newValue == "Match"){
-                            $scope.topFill = "#363465";
+                            $scope.topFill = "#888B8D"; //??
                         }else{
-                            $scope.topFill = "#1e15f2";
+                            $scope.topFill = "#888B8D";
                         };
                     };  
 //                    $scope.$digest(wholeSVG);

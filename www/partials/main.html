@@ -36,23 +36,23 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
         
         <g id="verticals">
             <path  
-                  fill="none" stroke="#BD9E73" 
+                  fill="none" stroke="#F6BE00" 
                   stroke-width="16"
                   ng-attr-d="M{{rightSide*.3}},8 L{{(rightSide*.31)+(num2show*3)}},{{yOff+20}}">
             </path>
             <path 
-                  fill="none" stroke="#BD9E73" 
+                  fill="none" stroke="#F6BE00" 
                   stroke-width="16"
                   ng-attr-d="M{{rightSide*.7}},8 L{{(rightSide*.69)-(num2show*4)}},{{yOff+20}}">
             </path>
             
         </g>
 
-        <path id="titleBar" fill="none" stroke="#BD9E73" 
+        <path id="titleBar" fill="none" stroke="#F6BE00" 
                   shape-rendering="optimizeQuality" 
                   stroke-width="34" 
                   ng-attr-d="M{{rightSide*.3}},25 s{{rightSide*.2}},-15 {{rightSide*.4}},0" />
-        <path id="titleBarTxt" fill="none" stroke="#BD9E73" 
+        <path id="titleBarTxt" fill="none" stroke="#F6BE00" 
                   shape-rendering="optimizeQuality" 
                   stroke-width="34" 
                   ng-attr-d="M{{rightSide*.3}},40 s{{rightSide*.2}},-15 {{rightSide*.4}},0" />
@@ -74,14 +74,14 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                 hm-swipe-right="swipeRow(categType,'right',$index)"
                 hm-drag="moveRow(categType,$event)"
                 ng-repeat="categType in list2show(typeTitle,showResults) | limitTo:num2show" >
-            <path class="rowUnderScores" fill="none" stroke="#BD9E73" stroke-width="2" 
+            <path class="rowUnderScores" fill="none" stroke="#F6BE00" stroke-width="2" 
                   ng-show="!$first"
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.05)+($index*6)}},{{(rowHt*$index)+86}} 
                      s{{rightSide*.45}},-90 {{(rightSide*.90)-($index*12)}},0" /> 
             <path class="rowTitles" 
                   hm-tap="alert(plantObjectModel.dataIcons[categType].search_use)"
-                  fill="none" stroke="#BD9E73" 
+                  fill="none" stroke="#F6BE00" 
                   stroke-width="36"  
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.3)+($index*4)}},{{(rowHt*$index)+70}} 
@@ -132,7 +132,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             
             </g>
             <path class="arrowsLeft" fill="white" fill-opacity=".001"
-                  stroke="#BD9E73" stroke-width="7" 
+                  stroke="#00B388" stroke-width="7" 
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.075)+($index*6)}},{{(rowHt*$index)+105}} 
                      l-20,20 l20,20"
@@ -140,7 +140,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                   >
             </path>
             <path class="arrowsRight" fill="white" fill-opacity=".001"
-                  stroke="#BD9E73" stroke-width="7" 
+                  stroke="#00B388" stroke-width="7" 
                   shape-rendering="optimizeQuality" 
                   ng-attr-d="M{{(rightSide*.925)-($index*6)}},{{(rowHt*$index)+105}} 
                      l20,20 l-20,20"
@@ -160,9 +160,8 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             </path>
 -->
 
-            <!--below is not on top of vertical bars??-->
+            <!--below is not on top of vertical bars?? hm-tap="rot8($event,{{windowWd}},categType)"-->
             <path class="centerGlass"
-                  hm-tap="rot8($event,{{windowWd}},categType)"
                   hm-swipe-left="swipeRow(categType,'left',$index)"
                   hm-swipe-right="swipeRow(categType,'right',$index)"
                   ng-attr-d="M{{(rightSide*.31)+($index*4)}},{{(rowHt*$index)+87}} 
@@ -174,7 +173,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
         
         <g id="sideButtons">
             <path id="myGarden"
-                  fill="#A4AF3A" stroke="#2a2927"
+                  fill="#00B388" stroke="#2a2927"
                   stroke-width="1"
                   hm-tap="typeTitle='My Garden'"
                   ng-attr-d="M{{(rightSide*.31)+(num2show*2)}},{{yOff+15}} s-160,25 20,100 z">
@@ -196,7 +195,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
                 </textPath>
             </text>
             <path id="otherGardens"
-                  fill="#A4AF3A" stroke="#2a2927"
+                  fill="#00B388" stroke="#2a2927"
                   stroke-width="1"
                   hm-tap="typeTitle='rating'"
                   ng-attr-d="M{{(rightSide*.69)-(num2show*2)}},{{yOff+15}} s160,25 -20,100 z">
@@ -221,7 +220,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
         <g id="logoButton">
             <path hm-hold="showResults =! showResults"
                   hm-tap="typeTitle='Match'"
-                  fill="#A4AF3A" stroke="#2a2927" 
+                  fill="#00B388" stroke="#2a2927" 
                   stroke-width="1"
                   ng-attr-d="M{{(rightSide*.3)+(num2show*2)}},{{yOff+5}} S{{rightSide/2}},{{yOff-55}} {{(rightSide*.7)-(num2show*2)}},{{yOff+5}} 
                             l{{-((num2show*2)+12)}},120 s-90,15 {{(num2show*4)-(rightSide*.32)}},0 z">
@@ -257,7 +256,7 @@ hm-hold and hm-tap-options= etc. -- have to figure out sensitivity.
             <path id="rightSideBack" 
                   ng-if="rightSideShow"
                   stroke="{{topFill}}"
-                  fill="#F5F0EA" stroke-width="2"
+                  fill="#FFF9D9" stroke-width="2"
                   ng-attr-d="M{{rightSide}},0 l1500,0 l{{-(num2show*8)}},{{yOff+135}} l-1500,0 z">
             </path>
             <g id="rightSideClosed"
