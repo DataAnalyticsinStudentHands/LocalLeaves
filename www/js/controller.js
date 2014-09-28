@@ -99,6 +99,8 @@
 //                return categs.indexOf(categType);
 //            }
             $scope.topFill = "#363465";
+            $scope.fanColors = "#F6BE00";
+            $scope.selectColors = "#00B388";
 //            $scope.frameFill = "#8d309f";
             $scope.Sci = false;
             var rightSideShow = false;
