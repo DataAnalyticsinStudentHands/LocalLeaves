@@ -1,1 +1,1 @@
-Need to figure out license, readme, etc.
+This repository is currently not under active development.
